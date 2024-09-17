@@ -1,0 +1,72 @@
+.custom-header header > ul {
+    width: 33.33%;
+  }
+  .custom-header header {
+    background-color: black;
+    height: 100% !important;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-right: 5%;
+    padding-left: 5%;
+  }
+  .custom-header header .desktop-menu-item li a {
+    color: white;
+    font-size: 15px;
+    font-weight: 400;
+  }
+  .custom-header header .desktop-menu-item li a:hover {
+    color: #fc4242;
+  }
+.Banner:after {
+    content: "";
+    width: 100%;
+    height: 80px; 
+    bottom: -40px;
+    left: 0;
+    position: absolute;
+    background-image: url(../assets/images/BlackTopDivider.svg);
+    background-size: cover;
+    background-position: top;
+    background-repeat: repeat-x;
+}
+.Featuredevider:before {
+  content: "";
+  width: 100%;
+  height: 80px; 
+  top: -40px;
+  left: 0;
+  position: absolute;
+  background-image: url(../assets/images/BlackBottomDivider.svg);
+  background-size: cover;
+  background-position: top;
+  background-repeat: repeat-x;
+}
+.Featuredevider:after {
+  content: "";
+  width: 100%;
+  height: 80px; 
+  bottom: -40px;
+  left: 0;
+  position: absolute;
+  background-image: url(../assets/images/BlackTopDivider.svg);
+  background-size: cover;
+  background-position: top;
+  background-repeat: repeat-x;
+}
+.shadow1 {
+    text-shadow: 
+    0 0 10px #ff00001f,
+    0 0 2px #FF0000,
+    0 0 2px #FF0000,
+    0 0 2px #FF0000;
+  
+  /* Box shadow for the raised effect */
+  box-shadow: 
+    0 4px 6px rgba(255, 0, 0, 0.3),
+  }
+@media only screen and (max-width: 1024px) {
+    .custom-header header {
+      padding-right: 10px;
+      padding-left: 10px;
+    }
+  }
