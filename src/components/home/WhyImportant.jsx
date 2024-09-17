@@ -3,7 +3,7 @@ import React from "react";
 
 const WhyImportant = () => {
   return (
-    <div className="WhyImportant py-8 md:py-32">
+    <div className="WhyImportant py-28 md:py-32">
       <div className="container text-center">
         <h2 className="text-black text-5xl font-bold shadow1 mb-4">
           Why Jjapan Import?

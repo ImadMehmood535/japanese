@@ -35,7 +35,7 @@ const Countdown = () => {
   };
 
   return (
-    <div className="flex justify-center items-center space-x-4 ">
+    <div className="flex justify-center items-center space-x-4 flex-col md:flex-row">
       {['days', 'hours', 'minutes', 'seconds'].map((unit, index) => (
         <React.Fragment key={unit}>
           <div className="text-center">

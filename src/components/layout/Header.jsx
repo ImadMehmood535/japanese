@@ -19,6 +19,8 @@ import { LuUser2 } from "react-icons/lu";
 // import CartSideBar from "../general/CartSideBar";
 // import { getCookie } from "@/hooks/cookies";
 import { usePathname, useRouter } from "next/navigation";
+import Image from "next/image";
+import { Logo2 } from "@/assets";
 // import CustomAutocomplete from "../General/CustomAutocomplete";
 // import CustomAutocomplete from "./SeacrhModal";
 // import { API } from "@/api";
@@ -30,7 +32,7 @@ const Header = () => {
     {
       name: "Snakes Box",
       link: "/snakes-box",
-    }, 
+    },
     {
       name: "Current Giveaway!",
       link: "/current-giveaway!",
@@ -49,7 +51,7 @@ const Header = () => {
     {
       name: "Snakes Box",
       link: "/snakes-box",
-    }, 
+    },
     {
       name: "Current Giveaway!",
       link: "/current-giveaway!",
@@ -103,12 +105,23 @@ const Header = () => {
         onMenuOpenChange={setIsMenuOpen}
         className="flex justify-center items-center gap-3 custom-header"
       >
-        <NavbarContent className="block sm:hidden" justify="start">
+        <NavbarBrand className="flex justify-stat  ">
+          <Link href="/">
+            <Image
+              src={Logo2}
+              width={80}
+              height={40}
+              className="w-[250px]"
+              unoptimized
+            />
+          </Link>
+        </NavbarBrand>
+        {/* <NavbarContent className="block sm:hidden" justify="start">
           <NavbarMenuToggle
             className="text-white h-[40px] w-[40px]"
             aria-label={isMenuOpen ? "Close menu" : "Open menu"}
           />
-        </NavbarContent>
+        </NavbarContent> */}
 
         <NavbarContent className="hidden sm:flex   gap-4 desktop-menu-item uppercase !justify-between text-white text-base">
           {DeskTopMenuItem.map((item, key) => (
@@ -141,18 +154,18 @@ const Header = () => {
           ))}
         </NavbarContent>
 
-        <NavbarContent
-          className={`${
-            hide ? "hidden sm:block" : "flex  desktop-menu items-center"
-          } `}
-        >
-          <NavbarBrand className="flex justify-center py-2xxx">
-            <Link href="/">{/* <AcmeLogo className="table" /> */}</Link>
-          </NavbarBrand>
-        </NavbarContent>
+          {/* <NavbarContent
+            className={`${
+              hide ? "hidden sm:block" : "flex  desktop-menu items-center"
+            } `}
+          ></NavbarContent> */}
 
         <NavbarContent justify="end">
           <NavbarItem className="flex items-center flex-row-reverse gap-4  ">
+            <NavbarMenuToggle
+              className="text-white h-[40px] w-[40px] block sm:hidden" justify="start"
+              aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+            />
             <div className="relative cursor-pointer" onClick={handleCartClick}>
               <LiaShoppingBagSolid className="text-white md:text-[19px] cursor-pointer  " />
 
@@ -164,9 +177,9 @@ const Header = () => {
             </div>
 
             {/* {authorized ? ( */}
-              <Link href="/user">
-                <LuUser2 className="text-white" />
-              </Link>
+            <Link href="/user">
+              <LuUser2 className="text-white" />
+            </Link>
             {/* // ) : (
               <>
                   <Link href="/login">

@@ -15,7 +15,7 @@ const Banner = () => {
         <h1 className="text-white !text-4xl md:text-[90px] item mb-4">
           Exclusive Giveaways Galore!
         </h1>
-        <div className="button-wrapper flex items-center gap-4 justify-center">
+        <div className="button-wrapper flex items-center gap-4 justify-center flex-col md:flex-row">
           <Link
             href={"/"}
             className=" group text-white py-4 px-12 bg-themeSecondary-0  rounded-sm flex flex-row gap-2 items-center transition-all duration-700 w-auto font-bold text-base "

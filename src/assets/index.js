@@ -10,5 +10,9 @@ import CarList from "./images/CarList.jpg";
 import SamuraiFull from "./images/SamuraiFull.jpg";
 import FooterImage from "./images/FooterImage.jpg";
 import FooterLogo from "./images/FooterLogo.svg";
+import ShopBannerImage from "./images/ShopBanner.jpg";
+import ShopBannerBottom from "./images/ShopBannerBottom.png";
+import ShopReview from "./images/ShopReview.jpg";
+import UserProfile from "./images/UserProfile.jpg";
 
-export { Logo, Logo2, BannerImage, BlackTopDivider, Timer, FeatureProductImage, Productimage, CarList, SamuraiFull, BlackBottomDivider, FooterImage, FooterLogo };
+export { Logo, Logo2, BannerImage, BlackTopDivider, Timer, FeatureProductImage, Productimage, CarList, SamuraiFull, BlackBottomDivider, FooterImage, FooterLogo, ShopBannerImage, ShopBannerBottom, ShopReview, UserProfile };
