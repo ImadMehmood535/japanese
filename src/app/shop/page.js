@@ -5,7 +5,33 @@ import ShopBanner from "@/components/Shop/ShopBanner";
 import React from "react";
 
 const index = () => {
-  const data = [
+  const reviewslider1 = [
+    {
+      userProfile: UserProfile,
+      name: "Jareth Fellroth",
+      review:
+        "I genuinely love the tokyo treat boxes I've tried other services and usually are full of nothing but chocolate but but these boxes are a good balance of sweet and savory.",
+    },
+    {
+      userProfile: UserProfile,
+      name: "Jareth Fellroth",
+      review:
+        "I genuinely love the tokyo treat boxes I've tried other services and usually are full of nothing but chocolate but but these boxes are a good balance of sweet and savory.",
+    },
+    {
+      userProfile: UserProfile,
+      name: "Jareth Fellroth",
+      review:
+        "I genuinely love the tokyo treat boxes I've tried other services and usually are full of nothing but chocolate but but these boxes are a good balance of sweet and savory.",
+    },
+    {
+      userProfile: UserProfile,
+      name: "Jareth Fellroth",
+      review:
+        "I genuinely love the tokyo treat boxes I've tried other services and usually are full of nothing but chocolate but but these boxes are a good balance of sweet and savory.",
+    },
+  ];
+  const reviewslider2 = [
     {
       userProfile: UserProfile,
       name: "Jareth Fellroth",
@@ -34,8 +60,8 @@ const index = () => {
   return (
     <div className="shop">
       <ShopBanner />
-      <ProductSection />
-      <Review fetureimage={ShopReview} data={data} />
+      <ProductSection entries={true} />
+      <Review fetureimage={ShopReview} reviewslider1={reviewslider1} reviewslider2={reviewslider2} />
     </div>
   );
 };

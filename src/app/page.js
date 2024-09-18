@@ -12,7 +12,7 @@ export default function Home() {
       <Banner/>
       <Giveaway/>
       <FeatureProductHome/>
-      <ProductSection/>
+      <ProductSection entries={false} />
       <FeatureListArea/>
       <WhyImportant/>
     </div>

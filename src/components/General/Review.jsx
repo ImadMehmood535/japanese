@@ -6,7 +6,7 @@ import "swiper/css";
 import "swiper/css/pagination";
 import ReviewCart from "./ReviewCart";
 
-const Review = ({ fetureimage, data }) => {
+const Review = ({ fetureimage, reviewslider1, reviewslider2 }) => {
   return (
     <div className="Review">
       <Image
@@ -18,6 +18,23 @@ const Review = ({ fetureimage, data }) => {
         unoptimized
         alt="Footer Image"
       />
+      <h2 className="text-black text-5xl font-bold shadow1 mb-10 text-center">
+        Our snack squad speaks!
+      </h2>
+      <Swiper
+        slidesPerView={3}
+        spaceBetween={30}
+        pagination={{
+          clickable: true,
+        }}
+        className="mySwiper mb-6"
+      >
+        {reviewslider1.map((item, key) => (
+          <SwiperSlide key={key}>
+            <ReviewCart review={item} />
+          </SwiperSlide>
+        ))}
+      </Swiper>
       <Swiper
         slidesPerView={3}
         spaceBetween={30}
@@ -26,9 +43,9 @@ const Review = ({ fetureimage, data }) => {
         }}
         className="mySwiper"
       >
-        {data.map((item, key) => (
+        {reviewslider2.map((item, key) => (
           <SwiperSlide key={key}>
-            <ReviewCart review={item} />
+            <ReviewCart review={item} flip={true} />
           </SwiperSlide>
         ))}
       </Swiper>

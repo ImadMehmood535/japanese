@@ -85,22 +85,22 @@ const Footer = () => {
       />
       <div className="footer-inner bg-black py-9">
         <div className="container">
-          <div className="flex gap-12">
-            <div className="w-full md:w-[30%]">
+          <div className="flex gap-12 flex-col md:flex-row">
+            <div className="w-full md:w-[30%] text-center md:text-left flex justify-center md:justify-start flex-col">
               <Image
                 src={FooterLogo}
                 width={136}
                 height={136}
                 quality={100}
-                className="mb-10"
+                className="mb-10 mx-auto"
               />
               <p className="text-white text-balance">
                 Begin your experience with flexible pricing plans and worldwide
                 shipping!
               </p>
             </div>
-            <div className="w-full md:w-[70%]">
-              <div className="grid grid-cols-1 md:grid-cols-4">
+            <div className="w-full md:w-[70%] text-center md:text-left">
+              <div className="grid grid-cols-1 md:grid-cols-4 gap-5">
                 <div className="first-col">
                   <h3 className="text-white font-medium text-2xl mb-4">Help</h3>
                   <ul className="list-none">

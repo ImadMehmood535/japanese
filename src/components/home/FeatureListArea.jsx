@@ -34,7 +34,7 @@ const FeatureListArea = () => {
         unoptimized  
         className="w-full h-auto"
       />
-      <div className="py-[100px] Featuredevider bg-black relative">
+      <div className="py-[50px] md:py-[100px] Featuredevider bg-black relative">
         <div className="container">
           <div className="grid grid-cols-1 md:grid-cols-2">
             <div className="points-area flex flex-col gap-5">

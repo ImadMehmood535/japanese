@@ -8,7 +8,7 @@ const FeatureProductHome = () => {
     <div className="FeatureProductHome">
       <div className="container">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-8 items-center">
-          <div className="image-area">
+          <div className="image-area order-1 md:order-2">
             <Image
               src={FeatureProductImage}
               width={600}
@@ -35,7 +35,7 @@ const FeatureProductHome = () => {
               of Japan at home. Each Yokohama Box is a unique experience,
               inviting you to explore and enjoy a world of flavor.
             </p>
-            <div className="flex mt-4">
+            <div className="flex mt-4 justify-center md:justify-start">
               <Link
                 href={"/"}
                 className=" group text-white py-4 px-12 bg-themeSecondary-0  rounded-sm flex flex-row gap-2 items-center transition-all duration-700 w-auto font-bold text-base "

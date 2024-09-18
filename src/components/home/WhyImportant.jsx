@@ -10,7 +10,7 @@ const WhyImportant = () => {
         </h2>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-12 mt-16 mb-10">
-          <div className="icon-box">
+          <div className="icon-box ">
             <div className="image-wrapper flex justify-center mb-8">
               <svg
                 width="180"

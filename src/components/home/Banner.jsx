@@ -6,12 +6,12 @@ import React from "react";
 const Banner = () => {
   return (
     <div
-      className="Banner bg-cover bg-center bg-no-repeat h-[120vh]  flex justify-center items-end pb-[5%] relative  "
+      className="Banner bg-cover bg-center bg-no-repeat h-screen md:h-[120vh]  flex justify-center items-end pb-[5%] relative  "
       style={{
         backgroundImage: `url(${BannerImage.src})`,
       }}
     >
-      <div className="container  text-center">
+      <div className="container  text-center ">
         <h1 className="text-white !text-4xl md:text-[90px] item mb-4">
           Exclusive Giveaways Galore!
         </h1>

@@ -15,7 +15,7 @@ const ShopBanner = () => {
         />
       </div>
       <div
-        className=" pt-9 pb-20 md:min-h-[400px] bg-cover bg-left-bottom bg-no-repeat "
+        className=" pt-9 pb-20 md:min-h-[600px] bg-cover bg-left-bottom bg-no-repeat "
         style={{
           backgroundImage: `url(${ShopBannerBottom.src})`,
         }}
