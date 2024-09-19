@@ -4,7 +4,7 @@ import React from "react";
 
 const ShopBanner = () => {
   return (
-    <div className="ShopBanner bg-black">
+    <div className="ShopBanner ">
       <div className="full-sec">
         <Image
           src={ShopBannerImage}
@@ -15,15 +15,22 @@ const ShopBanner = () => {
         />
       </div>
       <div
-        className=" pt-9 pb-20 md:min-h-[600px] bg-cover bg-left-bottom bg-no-repeat "
-        style={{
-          backgroundImage: `url(${ShopBannerBottom.src})`,
-        }}
+        className=" py-9  bg-cover bg-left-bottom bg-no-repeat  relative image-mix-shade bg-black"
+        // style={{
+        //   backgroundImage: `url(${ShopBannerBottom.src})`,
+        // }}
       >
-        <h2 className="text-white text-5xl font-bold shadow1 mb-4 text-center">
+        <h2 className="text-white text-4xl md:text-6xl lg:text-8xl font-normal shadow1 mb-4 text-center gang relative z-20">
           Exclusive Snack boxes!
         </h2>
       </div>
+      <Image
+        src={ShopBannerBottom}
+        width={1600}
+        height={800}
+        className="w-full h-auto"
+        unoptimized
+      />
     </div>
   );
 };

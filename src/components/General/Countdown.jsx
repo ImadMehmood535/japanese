@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 
 const Countdown = () => {
   const calculateTimeLeft = () => {
-    const targetDate = new Date("2024-12-31T00:00:00");
+    const targetDate = new Date("2024-9-31 ");
     const currentTime = new Date();
     const difference = targetDate - currentTime;
 
@@ -43,16 +43,16 @@ const Countdown = () => {
   }
 
   return (
-    <div className="flex justify-center items-center space-x-4 flex-col md:flex-row">
+    <div className="flex justify-center items-center space-x-4 flex-col md:flex-row md:gap-9">
       {["days", "hours", "minutes", "seconds"].map((unit, index) => (
         <React.Fragment key={unit}>
           <div className="text-center !ml-0 md:ml:2">
             <div className="relative">
-              <div className="text-6xl font-bold text-red-600 shadow1">
+              <div className="text-4xl md:text-6xl lg:text-8xl font-normal text-red-600 shadow1 gang">
                 {formatNumber(timeLeft[unit] || 0)}
               </div>
             </div>
-            <div className="text-base mt-2 font-bold">{unit.toUpperCase()}</div>
+            <div className="text-lg md:text-2xl mt-2 font-normal rubick">{unit.toUpperCase()}</div>
           </div>
           {index < 3 && (
             <div className="text-4xl font-bold text-gray-400 !ml-0 md:ml-2 md:mb-6">:</div>

@@ -92,9 +92,9 @@ const Footer = () => {
                 width={136}
                 height={136}
                 quality={100}
-                className="mb-10 mx-auto"
+                className="mb-10 mx-auto md:ml-0"
               />
-              <p className="text-white text-balance">
+              <p className="text-white text-balance rubick md:max-w-[322px]">
                 Begin your experience with flexible pricing plans and worldwide
                 shipping!
               </p>
@@ -102,10 +102,10 @@ const Footer = () => {
             <div className="w-full md:w-[70%] text-center md:text-left">
               <div className="grid grid-cols-1 md:grid-cols-4 gap-5">
                 <div className="first-col">
-                  <h3 className="text-white font-medium text-2xl mb-4">Help</h3>
+                  <h3 className="text-white font-medium text-2xl mb-4 rubick">Help</h3>
                   <ul className="list-none">
                     {helpmenu.map((item, key) => (
-                      <li key={key} className="text-white mb-2">
+                      <li key={key} className="text-white mb-2 rubick text-lg">
                         <Link href={item.link} className="font-normal">
                           {item.title}
                         </Link>
@@ -114,12 +114,12 @@ const Footer = () => {
                   </ul>
                 </div>
                 <div className="second-col">
-                  <h3 className="text-white font-medium text-2xl mb-4">
+                  <h3 className="text-white font-medium text-2xl mb-4 rubick">
                     About Us
                   </h3>
                   <ul className="list-none">
                     {aboutmenu.map((item, key) => (
-                      <li key={key} className="text-white mb-2">
+                      <li key={key} className="text-white mb-2 rubick text-lg">
                         <Link href={item.link} className="font-normal">
                           {item.title}
                         </Link>
@@ -128,10 +128,10 @@ const Footer = () => {
                   </ul>
                 </div>
                 <div className="third-col">
-                  <h3 className="text-white font-medium text-2xl mb-4">Shop</h3>
+                  <h3 className="text-white font-medium text-2xl mb-4 rubick">Shop</h3>
                   <ul className="list-none">
                     {shopmenu.map((item, key) => (
-                      <li key={key} className="text-white mb-2">
+                      <li key={key} className="text-white mb-2 rubick text-lg">
                         <Link href={item.link} className="font-normal">
                           {item.title}
                         </Link>
@@ -140,7 +140,7 @@ const Footer = () => {
                   </ul>
                 </div>
                 <div className="forth-col">
-                  <h3 className="text-white font-medium text-2xl mb-4">
+                  <h3 className="text-white font-medium text-2xl mb-4 rubick">
                     Be the first to know!
                   </h3>
                   <form onSubmit={handleSubmit(onSubmit)} className="mb-4">
@@ -184,7 +184,7 @@ const Footer = () => {
                       </p>
                     )}
                   </form>
-                  <p className="text-lg text-white">
+                  <p className="text-white rubick text-lg">
                     ReReceive the latest news and deals!
                   </p>
                 </div>
@@ -195,7 +195,7 @@ const Footer = () => {
       </div>
       <div className="copy-foter bg-black py-9">
         <div className="container">
-          <p className="text-white text-center">
+          <p className="text-white text-center rubick text-lg">
             Copyright © 2024 JJapan Import® -  Terms & Conditions - Privacy
             Policy
           </p>

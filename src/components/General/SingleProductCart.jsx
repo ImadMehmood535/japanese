@@ -14,14 +14,14 @@ const SingleProductCart = ({ product, entries = false }) => {
           className="w-full h-auto"
         />
       </div>
-      <div className="content-wrapper text-center">
-        <h3 className="text-black font-medium text-xl md:text-3xl mb-3">
+      <div className="content-wrapper text-center md:max-w-[80%] mx-auto">
+        <h3 className="text-black font-medium text-2xl md:text-3xl mb-3 rubick ">
           {product.title}
         </h3>
         {entries == true && (
-          <p className="flex flex-row gap-2 items-center justify-center">
-         <IoPaperPlane className="text-[#ED1B24]" />
-            {product.entries}
+          <p className="text-black rubick text-lg font-normal flex flex-row gap-2 items-center justify-center">
+            <IoPaperPlane className="text-[#ED1B24]" />
+            {product.entries} Entries
           </p>
         )}
       </div>

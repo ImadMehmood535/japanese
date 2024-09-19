@@ -5,11 +5,11 @@ const WhyImportant = () => {
   return (
     <div className="WhyImportant py-28 md:py-32">
       <div className="container text-center">
-        <h2 className="text-black text-5xl font-bold shadow1 mb-4">
+        <h2 className="text-black text-4xl md:text-6xl font-normal shadow1 mb-4 gang">
           Why Jjapan Import?
         </h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-12 mt-16 mb-10">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-12 mt-16 md:mt-20 mb-10">
           <div className="icon-box ">
             <div className="image-wrapper flex justify-center mb-8">
               <svg
@@ -26,10 +26,10 @@ const WhyImportant = () => {
               </svg>
             </div>
             <div className="content-area">
-              <h3 className="text-black font-medium text-xl md:text-3xl mb-4">
+              <h3 className="text-black font-medium text-xl md:text-3xl mb-4 rubick">
                 Snack box subscription
               </h3>
-              <p className="text-black text-xl font-normal">
+              <p className="text-black text-xl font-normal rubick ">
                 Begin your experience with flexible pricing plans and worldwide
                 shipping!
               </p>
@@ -51,10 +51,10 @@ const WhyImportant = () => {
               </svg>
             </div>
             <div className="content-area">
-              <h3 className="text-black font-medium text-xl md:text-3xl mb-4">
+              <h3 className="text-black font-medium text-xl md:text-3xl mb-4 rubick">
                 Monthly snack themes
               </h3>
-              <p className="text-black text-xl font-normal">
+              <p className="text-black text-xl font-normal rubick">
                 Get Japan-exclusive snacks handpicked for a tastebud adventure!
               </p>
             </div>
@@ -118,10 +118,10 @@ const WhyImportant = () => {
               </svg>
             </div>
             <div className="content-area">
-              <h3 className="text-black font-medium text-xl md:text-3xl mb-4">
+              <h3 className="text-black font-medium text-xl md:text-3xl mb-4 rubick">
                 From Japan to your door!
               </h3>
-              <p className="text-black text-xl font-normal">
+              <p className="text-black text-xl font-normal rubick">
                 Explore Japanese culture by diving into unique snacks
               </p>
             </div>
@@ -130,7 +130,7 @@ const WhyImportant = () => {
         <div className="flex  justify-center ">
           <Link
             href={"/"}
-            className=" group text-white py-4 px-12 bg-themeSecondary-0  rounded-sm flex flex-row gap-2 items-center transition-all duration-700 w-auto font-bold text-base "
+            className=" group text-white py-4 px-12 bg-themeSecondary-0  rounded-md flex flex-row gap-2 items-center transition-all duration-700 w-auto font-bold text-base uppercase "
           >
             Subscribe Now
             <span className="-translate-x-[100px] group-hover:translate-x-0 hidden group-hover:block transition-all duratioduration-300">

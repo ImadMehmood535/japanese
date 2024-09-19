@@ -15,7 +15,7 @@ import {
 // import { AcmeLogo } from "./AcmeLogo";
 import { LiaShoppingBagSolid } from "react-icons/lia";
 import { LuUser2 } from "react-icons/lu";
-
+import { CiSearch } from "react-icons/ci";
 // import CartSideBar from "../general/CartSideBar";
 // import { getCookie } from "@/hooks/cookies";
 import { usePathname, useRouter } from "next/navigation";
@@ -109,9 +109,9 @@ const Header = () => {
           <Link href="/">
             <Image
               src={Logo2}
-              width={80}
+              width={74}
               height={40}
-              className="w-[250px]"
+              className="w-auto h-[75px]"
               unoptimized
             />
           </Link>
@@ -133,7 +133,7 @@ const Header = () => {
             >
               <Link
                 href={item.link}
-                className="GeneralSans whitespace-nowrap text-sm font-medium text-white hover:text-[#fc4242] cursor-pointer"
+                className="GeneralSans whitespace-nowrap text-lg font-normal rubick text-white hover:text-[#ED1B24] cursor-pointer"
               >
                 {item.name}
               </Link>
@@ -143,7 +143,7 @@ const Header = () => {
                     <Link
                       key={subKey}
                       href={subItem.link}
-                      className="GeneralSans  block px-4 py-3 text-sm font-medium text-black hover:text-[#fc4242] cursor-pointer"
+                      className="GeneralSans rubick  block px-4 py-3 text-sm font-medium text-black hover:text-[#fc4242] cursor-pointer"
                     >
                       {subItem.name}
                     </Link>
@@ -154,7 +154,7 @@ const Header = () => {
           ))}
         </NavbarContent>
 
-          {/* <NavbarContent
+        {/* <NavbarContent
             className={`${
               hide ? "hidden sm:block" : "flex  desktop-menu items-center"
             } `}
@@ -163,11 +163,12 @@ const Header = () => {
         <NavbarContent justify="end">
           <NavbarItem className="flex items-center flex-row-reverse gap-4  ">
             <NavbarMenuToggle
-              className="text-white h-[40px] w-[40px] block sm:hidden" justify="start"
+              className="text-white h-[40px] w-[40px] block sm:hidden"
+              justify="start"
               aria-label={isMenuOpen ? "Close menu" : "Open menu"}
             />
             <div className="relative cursor-pointer" onClick={handleCartClick}>
-              <LiaShoppingBagSolid className="text-white md:text-[19px] cursor-pointer  " />
+              <LiaShoppingBagSolid className="text-white text-2xl md:text-3xl cursor-pointer  " />
 
               {/* {numberOfItems > 0 && (
                 <span className="absolute GeneralSans text-red-700 top-2 left-2 text-sm font-bold bg-white rounded-full w-4 h-4 flex justify-center items-center">
@@ -178,7 +179,10 @@ const Header = () => {
 
             {/* {authorized ? ( */}
             <Link href="/user">
-              <LuUser2 className="text-white" />
+              <LuUser2 className="text-white text-2xl md:text-3xl" />
+            </Link>
+            <Link href="/user">
+              <CiSearch className="text-white text-2xl md:text-3xl" />
             </Link>
             {/* // ) : (
               <>
@@ -196,7 +200,7 @@ const Header = () => {
           {additionalMenuItems.map((item, index) => (
             <NavbarMenuItem key={`${item}-${index}`}>
               <Link
-                className="GeneralSans w-full text-black hover:text-[#FC4242]"
+                className="GeneralSans w-full text-black hover:text-[#ED1B24]"
                 href={item.link}
                 size="lg"
               >

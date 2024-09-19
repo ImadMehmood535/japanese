@@ -12,13 +12,13 @@ const Banner = () => {
       }}
     >
       <div className="container  text-center ">
-        <h1 className="text-white !text-4xl md:text-[90px] item mb-4">
+        <h1 className="text-white text-4xl md:text-8xl mb-8 gang shadow1">
           Exclusive Giveaways Galore!
         </h1>
         <div className="button-wrapper flex items-center gap-4 justify-center flex-col md:flex-row">
           <Link
             href={"/"}
-            className=" group text-white py-4 px-12 bg-themeSecondary-0  rounded-sm flex flex-row gap-2 items-center transition-all duration-700 w-auto font-bold text-base "
+            className=" rubick group  text-white py-4 px-12 bg-themeSecondary-0  rounded-sm flex flex-row gap-2 items-center transition-all duration-700 w-auto font-medium text-base "
           >
             Learn More
             <span className="-translate-x-[100px] group-hover:translate-x-0 hidden group-hover:block transition-all duratioduration-300">
@@ -38,7 +38,7 @@ const Banner = () => {
           </Link>
           <Link
             href={"/"}
-            className=" group text-black py-4 px-12 bg-white   rounded-sm flex flex-row gap-2 items-center transition-all duration-700 w-auto font-bold text-base"
+            className="rubick group text-black py-4 px-12 bg-white   rounded-sm flex flex-row gap-2 items-center transition-all duration-700 w-auto font-medium text-base"
           >
             Shop Now
             

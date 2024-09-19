@@ -8,7 +8,7 @@ import ReviewCart from "./ReviewCart";
 
 const Review = ({ fetureimage, reviewslider1, reviewslider2 }) => {
   return (
-    <div className="Review">
+    <div className="Review relative">
       <Image
         src={fetureimage}
         width={1600}
@@ -18,37 +18,39 @@ const Review = ({ fetureimage, reviewslider1, reviewslider2 }) => {
         unoptimized
         alt="Footer Image"
       />
-      <h2 className="text-black text-5xl font-bold shadow1 mb-10 text-center">
-        Our snack squad speaks!
-      </h2>
-      <Swiper
-        slidesPerView={3}
-        spaceBetween={30}
-        pagination={{
-          clickable: true,
-        }}
-        className="mySwiper mb-6"
-      >
-        {reviewslider1.map((item, key) => (
-          <SwiperSlide key={key}>
-            <ReviewCart review={item} />
-          </SwiperSlide>
-        ))}
-      </Swiper>
-      <Swiper
-        slidesPerView={3}
-        spaceBetween={30}
-        pagination={{
-          clickable: true,
-        }}
-        className="mySwiper"
-      >
-        {reviewslider2.map((item, key) => (
-          <SwiperSlide key={key}>
-            <ReviewCart review={item} flip={true} />
-          </SwiperSlide>
-        ))}
-      </Swiper>
+      <div className="review-area relative">
+        <h2 className="text-black text-4xl md:text-6xl font-normal shadow1 mb-10 md:mb-16 text-center gang">
+          Our snack squad speaks!
+        </h2>
+        <Swiper
+          slidesPerView={3}
+          spaceBetween={30}
+          pagination={{
+            clickable: true,
+          }}
+          className="mySwiper mb-6"
+        >
+          {reviewslider1.map((item, key) => (
+            <SwiperSlide key={key}>
+              <ReviewCart review={item} />
+            </SwiperSlide>
+          ))}
+        </Swiper>
+        <Swiper
+          slidesPerView={3}
+          spaceBetween={30}
+          pagination={{
+            clickable: true,
+          }}
+          className="mySwiper"
+        >
+          {reviewslider2.map((item, key) => (
+            <SwiperSlide key={key}>
+              <ReviewCart review={item} flip={true} />
+            </SwiperSlide>
+          ))}
+        </Swiper>
+      </div>
     </div>
   );
 };

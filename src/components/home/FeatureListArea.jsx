@@ -38,10 +38,10 @@ const FeatureListArea = () => {
         <div className="container">
           <div className="grid grid-cols-1 md:grid-cols-2">
             <div className="points-area flex flex-col gap-5">
-              <h2 className="text-white text-5xl font-bold shadow1 mb-4">
+              <h2 className="text-white text-4xl md:text-6xl font-normal shadow1 mb-4 gang">
                 HOW TO ENTER
               </h2>
-              <p className="text-white">
+              <p className="text-white font-normal text-lg md:text-xl md:mb-6">
                 To enter the giveaway at JJapan Import, please follow these
                 steps:
               </p>
@@ -62,12 +62,12 @@ const FeatureListArea = () => {
                       />
                     </svg>
                     <div className="w-[80%]">
-                      <p className="text-white">{item.text}</p>
+                      <p className="text-white font-normal text-lg md:text-xl">{item.text}</p>
                     </div>
                   </li>
                 ))}
               </ul>
-              <p className="text-white">
+              <p className="text-white font-normal text-lg md:text-xl">
                 Please note that terms and conditions may apply, and it's
                 important to read them carefully before entering the giveaway.
                 Good luck!
