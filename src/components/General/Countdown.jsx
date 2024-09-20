@@ -48,7 +48,7 @@ const Countdown = () => {
         <React.Fragment key={unit}>
           <div className="text-center !ml-0 md:ml:2">
             <div className="relative">
-              <div className="text-4xl md:text-6xl lg:text-8xl font-normal text-red-600 shadow1 gang">
+              <div className="text-4xl md:text-6xl lg:text-8xl font-normal text-red-600  gang">
                 {formatNumber(timeLeft[unit] || 0)}
               </div>
             </div>

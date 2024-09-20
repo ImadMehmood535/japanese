@@ -6,7 +6,7 @@ import { IoPaperPlane } from "react-icons/io5";
 const SingleProductCart = ({ product, entries = false }) => {
   return (
     <div className="product-wrapper">
-      <Link href={`/shop/${product?.slug}`}>
+      <Link href={`/snakes-box/${product?.slug}`}>
         <div className="image-wrapper">
           <Image
             src={product.image}
