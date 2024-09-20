@@ -13,12 +13,12 @@ const FeatureProductHome = () => {
               src={FeatureProductImage}
               width={600}
               height={600}
-              className="w-full h-auto"
+              className="w-full max-w-[600px] h-auto"
               quality={100}
             />
           </div>
           <div className="content-area text-center md:text-left order-1 md:order-2">
-            <h2 className="text-black text4xl md:text-6xl font-normal shadow1 mb-4 gang text-balance md:mb-16">
+            <h2 className="text-black text4xl md:text-6xl font-normal shadow1 mb-4 gang text-balance md:mb-8">
               Create your own Yokohama Box
             </h2>
             <p className="leading-normal md:leading-8 rubick text-lg md:text-xl md:mb-16">
@@ -38,7 +38,7 @@ const FeatureProductHome = () => {
             <div className="flex mt-4 justify-center md:justify-start">
               <Link
                 href={"/shop"}
-                className=" group rounded-md text-white py-4 px-12 bg-themeSecondary-0   flex flex-row gap-2 items-center transition-all duration-700 w-auto font-bold text-base "
+                className=" group rounded-md text-white py-4 px-12 bg-themeSecondary-0   flex flex-row gap-2 items-center transition-all duration-700 w-auto font-medium text-base uppercase"
               >
                 View Product
                 <span className="-translate-x-[100px] group-hover:translate-x-0 hidden group-hover:block transition-all duratioduration-300">

@@ -17,5 +17,8 @@ import UserProfile from "./images/UserProfile.jpg";
 import InnerHeaderBanner from "./images/InnerHeaderBanner.jpg";
 import ProductBanner from "./images/ProductBanner.jpg";
 import ProductGiftImage from "./images/ProductGiftImage.jpg";
+import giftboxicon from "./images/giftboxicon.svg";
+import Snaksicon from "./images/Snaksicon.svg";
+import Shippingicon from "./images/Shippingicon.svg";
 
-export { Logo, Logo2, BannerImage, BlackTopDivider, Timer, FeatureProductImage, Productimage, CarList, SamuraiFull, BlackBottomDivider, FooterImage, FooterLogo, ShopBannerImage, ShopBannerBottom, ShopReview, UserProfile, InnerHeaderBanner, ProductBanner, ProductGiftImage };
+export { Logo, Logo2, BannerImage, BlackTopDivider, Timer, FeatureProductImage, Productimage, CarList, SamuraiFull, BlackBottomDivider, FooterImage, FooterLogo, ShopBannerImage, ShopBannerBottom, ShopReview, UserProfile, InnerHeaderBanner, ProductBanner, ProductGiftImage, giftboxicon, Snaksicon, Shippingicon };

@@ -10,10 +10,10 @@ const SingleProductCart = ({ product, entries = false }) => {
         <div className="image-wrapper">
           <Image
             src={product.image}
-            width={400}
-            height={400}
+            width={350}
+            height={350}
             alt={product.title}
-            className="w-full h-auto"
+            className="mx-auto"
           />
         </div>
         <div className="content-wrapper text-center md:max-w-[80%] mx-auto">
