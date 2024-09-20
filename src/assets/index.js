@@ -20,5 +20,48 @@ import ProductGiftImage from "./images/ProductGiftImage.jpg";
 import giftboxicon from "./images/giftboxicon.svg";
 import Snaksicon from "./images/Snaksicon.svg";
 import Shippingicon from "./images/Shippingicon.svg";
+import emailicon from "./images/emailicon.svg";
+import phoneicon from "./images/phoneicon.svg";
+import clockicon from "./images/clockicon.svg";
+import locationicon from "./images/locationicon.svg";
+import linkedinicon from "./images/linkedinicon.svg";
+import twittericon from "./images/twittericon.svg";
+import insta from "./images/insta.svg";
+import youtube from "./images/youtube.svg";
+import facebook from "./images/facebook.svg";
+import tiktok from "./images/tiktok.svg";
 
-export { Logo, Logo2, BannerImage, BlackTopDivider, Timer, FeatureProductImage, Productimage, CarList, SamuraiFull, BlackBottomDivider, FooterImage, FooterLogo, ShopBannerImage, ShopBannerBottom, ShopReview, UserProfile, InnerHeaderBanner, ProductBanner, ProductGiftImage, giftboxicon, Snaksicon, Shippingicon };
+export {
+  Logo,
+  Logo2,
+  BannerImage,
+  BlackTopDivider,
+  Timer,
+  FeatureProductImage,
+  Productimage,
+  CarList,
+  SamuraiFull,
+  BlackBottomDivider,
+  FooterImage,
+  FooterLogo,
+  ShopBannerImage,
+  ShopBannerBottom,
+  ShopReview,
+  UserProfile,
+  InnerHeaderBanner,
+  ProductBanner,
+  ProductGiftImage,
+  giftboxicon,
+  Snaksicon,
+  Shippingicon,
+  emailicon,
+  phoneicon,
+  clockicon,
+  locationicon,
+  linkedinicon,
+  twittericon,
+  insta,
+  youtube,
+  facebook,
+  tiktok,
+};
