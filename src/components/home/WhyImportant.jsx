@@ -14,7 +14,12 @@ const WhyImportant = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-12 mt-16 md:mt-20 mb-10">
           <div className="icon-box ">
             <div className="image-wrapper flex justify-center mb-8">
-              <Image src={giftboxicon} width={120} height={120} alt="Snack box"/>
+              <Image
+                src={giftboxicon}
+                width={120}
+                height={120}
+                alt="Snack box"
+              />
             </div>
             <div className="content-area">
               <h3 className="text-black font-medium text-xl md:text-2xl mb-2 rubick">
@@ -28,10 +33,15 @@ const WhyImportant = () => {
           </div>
           <div className="icon-box">
             <div className="image-wrapper flex justify-center mb-8">
-            <Image src={Snaksicon} width={120} height={120} alt="Monthly snack"/>
+              <Image
+                src={Snaksicon}
+                width={120}
+                height={120}
+                alt="Monthly snack"
+              />
             </div>
             <div className="content-area">
-            <h3 className="text-black font-medium text-xl md:text-2xl mb-2 rubick">
+              <h3 className="text-black font-medium text-xl md:text-2xl mb-2 rubick">
                 Monthly snack themes
               </h3>
               <p className="text-black text-lg font-normal rubick ">
@@ -41,10 +51,15 @@ const WhyImportant = () => {
           </div>
           <div className="icon-box">
             <div className="image-wrapper flex justify-center mb-8">
-            <Image src={Shippingicon} width={120} height={120} alt="Monthly snack h-[150px]"/>
+              <Image
+                src={Shippingicon}
+                width={120}
+                height={120}
+                alt="Monthly snack h-[150px]"
+              />
             </div>
             <div className="content-area">
-            <h3 className="text-black font-medium text-xl md:text-2xl mb-2 rubick">
+              <h3 className="text-black font-medium text-xl md:text-2xl mb-2 rubick">
                 From Japan to your door!
               </h3>
               <p className="text-black text-lg font-normal rubick ">

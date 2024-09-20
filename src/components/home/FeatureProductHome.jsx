@@ -13,6 +13,7 @@ const FeatureProductHome = () => {
               src={FeatureProductImage}
               width={600}
               height={600}
+              alt="jjapan"
               className="w-full max-w-[600px] h-auto"
               quality={100}
             />

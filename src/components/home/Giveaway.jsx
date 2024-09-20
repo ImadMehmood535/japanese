@@ -10,6 +10,7 @@ const Giveaway = () => {
         src={Timer}
         width={1600}
         height={800}
+        alt="jjapan"
         unoptimized
         className="w-full h-auto"
       />
