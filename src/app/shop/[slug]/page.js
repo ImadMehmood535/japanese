@@ -1,60 +1,12 @@
 import { Productimage, ShopReview, UserProfile } from "@/assets";
-import ProductSection from "@/components/General/ProductSection";
 import Review from "@/components/General/Review";
-import ShopBanner from "@/components/Shop/ShopBanner";
+import ProductGift from "@/components/Shop/ProductGift";
+import RelatedProducts from "@/components/Shop/RelatedProducts";
+import SingleProductBanner from "@/components/Shop/SingleProductBanner";
+import SingleShop from "@/components/Shop/SingleShop";
 import React from "react";
 
-const index = () => {
-  const allproducts = [
-    {
-      image: Productimage,
-      title: "Create your own Yokohama Box",
-      slug: "create-your-own-Yokohama-Box",
-      description: "lorem20",
-      price: 50,
-      entries: 50,
-    },
-    {
-      image: Productimage,
-      title: "Fukuoka Box",
-      slug: "create-your-own-Yokohama-Box",
-      description: "lorem20",
-      price: 50,
-      entries: 50,
-    },
-    {
-      image: Productimage,
-      title: "Hiyoshi Box",
-      slug: "create-your-own-Yokohama-Box",
-      description: "lorem20",
-      price: 50,
-      entries: 50,
-    },
-    {
-      image: Productimage,
-      title: "Kamakura Box",
-      slug: "create-your-own-Yokohama-Box",
-      description: "lorem20",
-      price: 50,
-      entries: 50,
-    },
-    {
-      image: Productimage,
-      title: "Fukuoka Box",
-      slug: "create-your-own-Yokohama-Box",
-      description: "lorem20",
-      price: 50,
-      entries: 50,
-    },
-    {
-      image: Productimage,
-      title: "Kawasaki Box",
-      slug: "create-your-own-Yokohama-Box",
-      description: "lorem20",
-      price: 50,
-      entries: 50,
-    },
-  ];
+const page = ({ data }) => {
   const reviewslider1 = [
     {
       userProfile: UserProfile,
@@ -107,13 +59,53 @@ const index = () => {
         "I genuinely love the tokyo treat boxes I've tried other services and usually are full of nothing but chocolate but but these boxes are a good balance of sweet and savory.",
     },
   ];
+  const relatedProducts = [
+    {
+      image: Productimage,
+      title: "Create your own Yokohama Box",
+      slug: "create-your-own-Yokohama-Box",
+      description: "lorem20",
+      price: 50,
+      entries: 50,
+    },
+    {
+      image: Productimage,
+      title: "Fukuoka Box",
+      slug: "create-your-own-Yokohama-Box",
+      description: "lorem20",
+      price: 50,
+      entries: 50,
+    },
+    {
+      image: Productimage,
+      title: "Hiyoshi Box",
+      slug: "create-your-own-Yokohama-Box",
+      description: "lorem20",
+      price: 50,
+      entries: 50,
+    },
+    {
+      image: Productimage,
+      title: "Hiyoshi Box",
+      slug: "create-your-own-Yokohama-Box",
+      description: "lorem20",
+      price: 50,
+      entries: 50,
+    },
+  ];
   return (
-    <div className="shop">
-      <ShopBanner />
-      <ProductSection entries={true}  porducts={allproducts}/>
-      <Review fetureimage={ShopReview} reviewslider1={reviewslider1} reviewslider2={reviewslider2} />
+    <div className="product-page">
+      <SingleProductBanner />
+      <SingleShop />
+      <RelatedProducts  relatedProducts={relatedProducts}/>
+      <ProductGift />
+      <Review
+        fetureimage={ShopReview}
+        reviewslider1={reviewslider1}
+        reviewslider2={reviewslider2}
+      />
     </div>
   );
 };
 
-export default index;
+export default page;

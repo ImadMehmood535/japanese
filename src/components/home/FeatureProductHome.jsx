@@ -37,7 +37,7 @@ const FeatureProductHome = () => {
             </p>
             <div className="flex mt-4 justify-center md:justify-start">
               <Link
-                href={"/"}
+                href={"/shop"}
                 className=" group rounded-md text-white py-4 px-12 bg-themeSecondary-0   flex flex-row gap-2 items-center transition-all duration-700 w-auto font-bold text-base "
               >
                 View Product

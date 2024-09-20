@@ -15,5 +15,7 @@ import ShopBannerBottom from "./images/ShopBannerBottom.png";
 import ShopReview from "./images/ShopReview.jpg";
 import UserProfile from "./images/UserProfile.jpg";
 import InnerHeaderBanner from "./images/InnerHeaderBanner.jpg";
+import ProductBanner from "./images/ProductBanner.jpg";
+import ProductGiftImage from "./images/ProductGiftImage.jpg";
 
-export { Logo, Logo2, BannerImage, BlackTopDivider, Timer, FeatureProductImage, Productimage, CarList, SamuraiFull, BlackBottomDivider, FooterImage, FooterLogo, ShopBannerImage, ShopBannerBottom, ShopReview, UserProfile, InnerHeaderBanner };
+export { Logo, Logo2, BannerImage, BlackTopDivider, Timer, FeatureProductImage, Productimage, CarList, SamuraiFull, BlackBottomDivider, FooterImage, FooterLogo, ShopBannerImage, ShopBannerBottom, ShopReview, UserProfile, InnerHeaderBanner, ProductBanner, ProductGiftImage };

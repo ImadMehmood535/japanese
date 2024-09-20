@@ -37,7 +37,7 @@ const Banner = () => {
             </span>
           </Link>
           <Link
-            href={"/"}
+            href={"/shop"}
             className="rubick group text-black py-4 px-12 bg-white   rounded-sm flex flex-row gap-2 items-center transition-all duration-700 w-auto font-medium text-base"
           >
             Shop Now

@@ -1,3 +1,6 @@
+body{
+  background-color: white;
+}
 .custom-header header>ul {
   width: 33.33%;
 }
@@ -76,6 +79,17 @@
 }
 
 
+/* .product-banner:before {
+  content: "";
+  width: 100%;
+  height: 300px;
+  background: rgb(220, 219, 215);
+  background: linear-gradient(180deg, rgb(220 219 215 / 55%) 0%, rgb(255 255 255 / 94%) 100%);
+  position: absolute;
+  bottom: 0%;
+  z-index: 1;
+  opacity: 1;
+} */
 .image-mix-shade:before {
   content: "";
   width: 100%;
@@ -88,36 +102,47 @@
 
 }
 
-.Review .review-area:before, .Review .review-area:after {
+.Review .review-area:before,
+.Review .review-area:after {
   content: "";
   width: 10%;
   height: 100%;
   position: absolute;
   top: 0;
- 
-  z-index: 21;background: rgb(255,255,255);
-  background: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 100%);
+
+  z-index: 21;
+  background: rgb(255, 255, 255);
+  background: linear-gradient(90deg, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 100%);
 }
-.Review .review-area:before{
+
+.Review .review-area:before {
   left: 0;
-  background: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 100%);
+  background: linear-gradient(90deg, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 100%);
 }
+
 .Review .review-area:after {
   right: 0;
-  background: linear-gradient(90deg,  rgba(255,255,255,0) 0%, rgba(255,255,255,1) 100%);
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 100%);
 }
-.PlanContentArea h2, .PlanContentArea h3, .PlanContentArea h4, .PlanContentArea h5, .PlanContentArea h6{
+
+.PlanContentArea h2,
+.PlanContentArea h3,
+.PlanContentArea h4,
+.PlanContentArea h5,
+.PlanContentArea h6 {
   color: black;
   font-size: 20px;
   font-weight: 700;
   margin-bottom: 15px;
   font-family: "rubick";
 }
-.PlanContentArea p{
+
+.PlanContentArea p {
   font-family: "rubick";
   font-size: 18px;
   margin-bottom: 20px;
 }
+
 @media only screen and (max-width: 1024px) {
   .custom-header header {
     padding-right: 10px;

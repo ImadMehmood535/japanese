@@ -1,53 +1,9 @@
-import { Productimage } from "@/assets";
+ 
 import React from "react";
 import SingleProductCart from "./SingleProductCart";
 
-const ProductSection = ({entries}) => {
-  const porducts = [
-    {
-      image: Productimage,
-      title: "Create your own Yokohama Box",
-      description: "lorem20",
-      price: 50,
-      entries : 50, 
-    },
-    {
-      image: Productimage,
-      title: "Fukuoka Box",
-      description: "lorem20",
-      price: 50,
-      entries : 50,
-    },
-    {
-      image: Productimage,
-      title: "Hiyoshi Box",
-      description: "lorem20",
-      price: 50,
-      entries : 50,
-    },
-    {
-      image: Productimage,
-      title: "Kamakura Box",
-      description: "lorem20",
-      price: 50,
-      entries : 50,
-    },
-    {
-      image: Productimage,
-      title: "Fukuoka Box",
-      description: "lorem20",
-      price: 50,
-      entries : 50,
-    },
-    {
-      image: Productimage,
-      title: "Kawasaki Box",
-      description: "lorem20",
-      price: 50,
-      entries : 50,
-    },
-    
-  ];
+const ProductSection = ({entries, porducts}) => {
+  
   return (
     <div className="ProductSection py-8 md:py-14">
       <div className="container">

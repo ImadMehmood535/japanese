@@ -9,7 +9,7 @@ import { useForm } from "react-hook-form";
 const Footer = () => {
   const helpmenu = [
     {
-      link: "/",
+      link: "/contact-us",
       title: "Contact Us",
     },
     {
@@ -17,11 +17,11 @@ const Footer = () => {
       title: "Order Tracking",
     },
     {
-      link: "/",
+      link: "/shipping-policy",
       title: "Shipping",
     },
     {
-      link: "/",
+      link: "/refund-policy",
       title: "Returns",
     },
   ];
