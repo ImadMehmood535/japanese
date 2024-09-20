@@ -89,9 +89,9 @@ const SingleShop = () => {
                       of replica team apparel. Show your support for Fernando
                       Alonso and his Aston Martin team through the 2024 with
                       this driver tee. Featuring the iconic team and sponsor
-                      branding on the chest, back and sleeves and Alonso's name
-                      and car number on the back there's no better way to show
-                      who you're cheering for at the circuit.
+                      branding on the chest, back and sleeves and Alonso&apos;s name
+                      and car number on the back there&apos;s no better way to show
+                      who you&apos;re cheering for at the circuit.
                     </p>
                   </div>
                 </div>

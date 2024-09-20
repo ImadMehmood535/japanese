@@ -23,7 +23,7 @@ const FeatureProductHome = () => {
             </h2>
             <p className="leading-normal md:leading-8 rubick text-lg md:text-xl md:mb-16">
               Embark on a culinary journey with the{" "}
-              <strong>"Create Your Own Yokohama Box,"</strong> a customizable
+              <strong>&quot;Create Your Own Yokohama Box,&quot;</strong> a customizable
               collection that brings the vibrant flavors of Yokohama to your
               doorstep. With a price range of $125-250, each box is a treasure
               trove of 17 carefully selected items, ensuring a delightful mix of

@@ -68,7 +68,7 @@ const FeatureListArea = () => {
                 ))}
               </ul>
               <p className="text-white font-normal text-lg md:text-xl">
-                Please note that terms and conditions may apply, and it's
+                Please note that terms and conditions may apply, and it&apos;s
                 important to read them carefully before entering the giveaway.
                 Good luck!
               </p>
