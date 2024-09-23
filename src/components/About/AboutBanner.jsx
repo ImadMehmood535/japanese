@@ -24,7 +24,7 @@ const AboutBanner = () => {
             Founded by a car enthusiast with an undeniable love for all things
             Japan, our mission is simple: to share the excitement, flavors, and
             lifestyle that make Japanese culture so special. From the streets of
-            Tokyo, we’re bringing you the best authentic Japanese snacks and
+            Tokyo, we&quot;re bringing you the best authentic Japanese snacks and
             exclusive chances to win custom-mod cars.
           </p>
         </div>
