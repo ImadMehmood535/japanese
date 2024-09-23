@@ -200,7 +200,7 @@ const Header = () => {
             </div>
 
             {/* {authorized ? ( */}
-            <Link href="/user">
+            <Link href="/login">
               {/* <LuUser2 className="text-white text-2xl md:text-3xl" /> */}
               <svg
                 width="34"

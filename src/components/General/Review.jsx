@@ -9,15 +9,17 @@ import ReviewCart from "./ReviewCart";
 const Review = ({ fetureimage, reviewslider1, reviewslider2 }) => {
   return (
     <div className="Review relative">
-      <Image
-        src={fetureimage}
-        width={1600}
-        height={800}
-        quality={100}
-        className="w-full h-auto"
-        unoptimized
-        alt="Footer Image"
-      />
+      {fetureimage && (
+        <Image
+          src={fetureimage}
+          width={1600}
+          height={800}
+          quality={100}
+          className="w-full h-auto"
+          unoptimized
+          alt="Footer Image"
+        />
+      )}
       <div className="review-area relative">
         <h2 className="text-black text-4xl md:text-6xl font-normal shadow1 mb-10 md:mb-16 text-center gang">
           Our snack squad speaks!

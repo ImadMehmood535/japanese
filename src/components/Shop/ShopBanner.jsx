@@ -14,12 +14,7 @@ const ShopBanner = () => {
           unoptimized
         />
       </div>
-      <div
-        className=" py-9  bg-cover bg-left-bottom bg-no-repeat  relative image-mix-shade bg-black"
-        // style={{
-        //   backgroundImage: `url(${ShopBannerBottom.src})`,
-        // }}
-      >
+      <div className=" py-9  bg-cover bg-left-bottom bg-no-repeat  relative image-mix-shade bg-black">
         <h2 className="text-white text-4xl md:text-6xl lg:text-8xl font-normal shadow1 mb-4 text-center gang relative z-20">
           Exclusive Snack boxes!
         </h2>

@@ -27,6 +27,18 @@ body{
 }
 
 
+.AboutBanner:after {
+  content: "";
+  width: 100%;
+  height: 80px;
+  bottom: -40px;
+  left: 0;
+  position: absolute;
+  background-image: url(../assets/images/BlackTopDivider.svg);
+  background-size: cover;
+  background-position: top;
+  background-repeat: repeat-x;
+}
 .Banner:after {
   content: "";
   width: 100%;
