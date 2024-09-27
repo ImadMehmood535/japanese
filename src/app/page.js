@@ -9,10 +9,10 @@ import WhyImportant from "@/components/home/WhyImportant";
 
 export default async function Home() {
   const { data: products } = await getAllProducts();
- 
+
   return (
     <div className="home">
-      <Banner />
+      <Banner /> 
       <Giveaway />
       <FeatureProductHome />
       <ProductSection entries={false} porducts={products} />

@@ -6,8 +6,45 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { API } from "@/api";
 import { errorToast, successToast } from "@/hooks/useToast";
+import { Slide } from "react-awesome-reveal";
+import { useEffect } from "react";
 
 const Footer = () => {
+  useEffect(() => {
+    const footerImageArea = document.querySelector(".footer-image-area");
+    const footerBackground = document.querySelector(".footer-background");
+
+    // Animation for the background
+    const observerOptions = {
+      root: null,
+      threshold: 0.1,
+    };
+
+    const observer = new IntersectionObserver((entries, observer) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          footerBackground.classList.add("animate"); // Start animation for background
+          observer.unobserve(entry.target); // Stop observing
+
+          // Delay for the :after pseudo-element animation
+          setTimeout(() => {
+            footerImageArea.classList.add("after-animate"); // Add class to trigger after animation
+          }, 2000); // Adjust the delay to match the duration of the background animation
+        }
+      });
+    }, observerOptions);
+
+    if (footerImageArea) {
+      observer.observe(footerImageArea);
+    }
+
+    return () => {
+      if (footerImageArea) {
+        observer.unobserve(footerImageArea);
+      }
+    };
+  }, []);
+
   const helpmenu = [
     {
       link: "/contact-us",
@@ -90,15 +127,19 @@ const Footer = () => {
   };
 
   return (
-    <div className="Footer">
+    <div className="Footer overflow-hidden">
       <div className="footer-image-area h-[540px] md:h-[800px] bg-transparent bg-cover bg-no-repeat bg-bottom-center overflow-hidden relative flex justify-center items-end">
-        <Image
-          src={FooterDoor}
-          width={600}
-          height={400}
-          quality={100}
-          className="mx-auto z-10 relative w-[300px] h-[300px] md:w-[600px] md:h-auto"
-        />
+        <div className="footer-background"></div>
+        <Slide triggerOnce direction="up" delay={2500}>
+          <Image
+            src={FooterDoor}
+            width={600}
+            height={400}
+            quality={100}
+            alt="jjapan"
+            className="mx-auto z-10 relative w-[300px] h-[300px] md:w-[600px] md:h-auto"
+          />
+        </Slide>
       </div>
       <div className="footer-inner bg-black py-9">
         <div className="container">
@@ -111,6 +152,7 @@ const Footer = () => {
                 quality={100}
                 unoptimized
                 className="mb-10 mx-auto md:ml-0 "
+                 alt="jjapan"
               />
               <p className="text-white  rubick md:max-w-[322px] text-base">
                 Begin your experience with flexible pricing plans and worldwide

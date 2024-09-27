@@ -157,9 +157,38 @@ body {
   margin-bottom: 20px;
 }
 
-.Footer .footer-image-area {
-  background-image: url(../assets/images/FooterHills.png);
+
+
+.footer-image-area {
+  position: relative;
+  height: 540px;  
 }
+
+.footer-background {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  top: 0;
+  background-image: url(../assets/images/FooterHills.png);
+  background-size: cover;
+  background-position: center bottom;
+}
+
+.footer-background.animate {
+  animation: slideUp 2s ease-in-out forwards;
+}
+
+@keyframes slideUp {
+  0% {
+    transform: translateY(100%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+ 
 
 .Footer .footer-image-area:before {
   content: "";
@@ -190,6 +219,15 @@ body {
   left: 0;
   right: 0;
   z-index: 20;
+  opacity: 0; /* Start hidden */
+  transform: translateY(20px); /* Start slightly below */
+  transition: opacity 2s ease-in-out, transform 2s ease-in-out; /* Set transition */
+}
+ 
+
+.Footer .footer-image-area.after-animate:after {
+  opacity: 1; /* Fully visible */
+  transform: translateY(0); /* Move to final position */
 }
 
 @-moz-keyframes spin {
