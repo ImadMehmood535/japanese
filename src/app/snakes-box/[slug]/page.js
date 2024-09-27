@@ -1,4 +1,5 @@
 import { Productimage, ShopReview, UserProfile } from "@/assets";
+import { getProductById } from "@/cached-requests";
 import Review from "@/components/General/Review";
 import ProductGift from "@/components/Shop/ProductGift";
 import RelatedProducts from "@/components/Shop/RelatedProducts";
@@ -6,7 +7,8 @@ import SingleProductBanner from "@/components/Shop/SingleProductBanner";
 import SingleShop from "@/components/Shop/SingleShop";
 import React from "react";
 
-const page = ({ data }) => {
+const Page = async ({ params }) => {
+  const { data: product } = await getProductById(params.slug);
   const reviewslider1 = [
     {
       userProfile: UserProfile,
@@ -96,7 +98,7 @@ const page = ({ data }) => {
   return (
     <div className="product-page">
       <SingleProductBanner />
-      <SingleShop />
+      <SingleShop product={product} />
       <RelatedProducts  relatedProducts={relatedProducts}/>
       <ProductGift />
       <Review
@@ -108,4 +110,4 @@ const page = ({ data }) => {
   );
 };
 
-export default page;
+export default Page;

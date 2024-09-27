@@ -8,6 +8,17 @@ const loginSchema = yup.object().shape({
   password: yup.string().required("Password is requried"),
 });
 
+const SignUpSchema = yup.object().shape({
+  firstName: yup.string().required("Please enter your Name"),
+  lastName: yup.string().required("Please enter your last Name"),
+  email: yup.string().email().required("Please Enter your email"),
+  phoneNumber: yup
+    .string()
+    .min(4, "Please enter your phone number")
+    .required("Please enter your phone number"),
+  password: yup.string().required("Password is requried"),
+});
+
 const forgetPassword = yup.object().shape({
   email: yup
     .string()
@@ -22,4 +33,4 @@ const resetPassword = yup.object().shape({
     .required("Please confirm your new password"),
 });
 
-export { loginSchema, forgetPassword, resetPassword };
+export { loginSchema, SignUpSchema, forgetPassword, resetPassword };

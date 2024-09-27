@@ -170,9 +170,9 @@ const Header = () => {
             <div className="relative cursor-pointer" onClick={handleCartClick}>
               {/* <LiaShoppingBagSolid className="text-white text-2xl md:text-3xl cursor-pointer  " /> */}
               <svg
-                width="30"
+                width="34"
                 height="34"
-                viewBox="0 0 30 34"
+                viewBox="0 0 34 34"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
               >

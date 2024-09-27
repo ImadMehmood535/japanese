@@ -1,4 +1,12 @@
 "use client";
+import { Link } from "@nextui-org/react";
+import Image from "next/image";
+import React, { useState } from "react";
+import { useForm } from "react-hook-form";
+import { errorToast, successToast } from "@/hooks/useToast";
+import { API } from "@/api";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { contactSchema } from "@/validations/contactUs";
 import {
   facebook,
   insta,
@@ -7,21 +15,33 @@ import {
   twittericon,
   youtube,
 } from "@/assets";
-import { Link } from "@nextui-org/react";
-import Image from "next/image";
-import React from "react";
-import { useForm } from "react-hook-form";
 
 const ContactFormComponent = () => {
   const {
     register,
+    control,
+    setValue,
     handleSubmit,
+    reset,
     formState: { errors },
-  } = useForm();
+  } = useForm({
+    resolver: yupResolver(contactSchema),
+  });
+  const [loading, setLoading] = useState(false);
+  const onSubmit = async (data) => {
+    console.log(data, "data is here");
+    setLoading(true);
 
-  const onSubmit = (data) => {
-    console.log(data);
-    // Handle form submission
+    try {
+      const response = await API.contact(data);
+      successToast(response?.data?.message);
+      reset();
+      setLoading(false);
+    } catch (error) {
+      console.log(error);
+      setLoading(false);
+      errorToast(error, "Can not submit Form");
+    }
   };
 
   return (
@@ -30,30 +50,30 @@ const ContactFormComponent = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <input
             {...register("firstName", { required: true })}
-            className="w-full p-2 border border-[#B1B1B1] rounded-lg bg-white"
+            className="w-full p-2 border border-[#B1B1B1] rounded-lg bg-white text-black"
             placeholder="First name"
           />
           <input
             {...register("lastName", { required: true })}
-            className="w-full p-2 border border-[#B1B1B1] rounded-lg bg-white"
+            className="w-full p-2 border border-[#B1B1B1] rounded-lg bg-white text-black"
             placeholder="Last name"
           />
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <input
             {...register("email", { required: true, pattern: /^\S+@\S+$/i })}
-            className="w-full p-2 border border-[#B1B1B1] rounded-lg bg-white"
+            className="w-full p-2 border border-[#B1B1B1] rounded-lg bg-white text-black"
             placeholder="Email address"
           />
           <input
             {...register("phone", { required: true })}
-            className="w-full p-2 border border-[#B1B1B1] rounded-lg bg-white"
+            className="w-full p-2 border border-[#B1B1B1] rounded-lg bg-white text-black"
             placeholder="Phone number"
           />
         </div>
         <textarea
           {...register("message", { required: true })}
-          className="w-full p-2 border border-[#B1B1B1] rounded-lg bg-white h-32"
+          className="w-full p-2 border border-[#B1B1B1] rounded-lg bg-white text-black h-32"
           placeholder="Message"
         />
         <button

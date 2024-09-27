@@ -33,6 +33,9 @@ import tiktok from "./images/tiktok.svg";
 import AboutBannerImage from "./images/AboutBannerImage.jpg";
 import AboutUser from "./images/AboutUser.jpg";
 import MissonBg from "./images/MissonBg.jpg";
+import FooterHills from "./images/FooterHills.png";
+import FooterDoor from "./images/FooterDoor.png";
+import RedSun from "./images/RedSun.png";
 
 export {
   Logo,
@@ -70,4 +73,7 @@ export {
   AboutBannerImage,
   AboutUser,
   MissonBg,
+  FooterHills,
+  FooterDoor,
+  RedSun,
 };

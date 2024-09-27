@@ -1,60 +1,12 @@
 import { Productimage, ShopReview, UserProfile } from "@/assets";
+import { getAllProducts } from "@/cached-requests";
 import ProductSection from "@/components/General/ProductSection";
 import Review from "@/components/General/Review";
 import ShopBanner from "@/components/Shop/ShopBanner";
 import React from "react";
 
-const index = () => {
-  const allproducts = [
-    {
-      image: Productimage,
-      title: "Create your own Yokohama Box",
-      slug: "create-your-own-Yokohama-Box",
-      description: "lorem20",
-      price: 50,
-      entries: 50,
-    },
-    {
-      image: Productimage,
-      title: "Fukuoka Box",
-      slug: "create-your-own-Yokohama-Box",
-      description: "lorem20",
-      price: 50,
-      entries: 50,
-    },
-    {
-      image: Productimage,
-      title: "Hiyoshi Box",
-      slug: "create-your-own-Yokohama-Box",
-      description: "lorem20",
-      price: 50,
-      entries: 50,
-    },
-    {
-      image: Productimage,
-      title: "Kamakura Box",
-      slug: "create-your-own-Yokohama-Box",
-      description: "lorem20",
-      price: 50,
-      entries: 50,
-    },
-    {
-      image: Productimage,
-      title: "Fukuoka Box",
-      slug: "create-your-own-Yokohama-Box",
-      description: "lorem20",
-      price: 50,
-      entries: 50,
-    },
-    {
-      image: Productimage,
-      title: "Kawasaki Box",
-      slug: "create-your-own-Yokohama-Box",
-      description: "lorem20",
-      price: 50,
-      entries: 50,
-    },
-  ];
+export default async function index() {
+  const { data: products } = await getAllProducts();
   const reviewslider1 = [
     {
       userProfile: UserProfile,
@@ -110,10 +62,8 @@ const index = () => {
   return (
     <div className="shop">
       <ShopBanner />
-      <ProductSection entries={true}  porducts={allproducts}/>
+      <ProductSection entries={true}  porducts={products}/>
       <Review fetureimage={ShopReview} reviewslider1={reviewslider1} reviewslider2={reviewslider2} />
     </div>
   );
-};
-
-export default index;
+}; 

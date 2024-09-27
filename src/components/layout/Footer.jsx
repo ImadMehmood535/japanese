@@ -1,10 +1,11 @@
 "use client";
-import { FooterImage, FooterLogo } from "@/assets";
+import { FooterDoor, FooterImage, FooterLogo } from "@/assets";
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
-import { Input } from "@nextui-org/react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
+import { API } from "@/api";
+import { errorToast, successToast } from "@/hooks/useToast";
 
 const Footer = () => {
   const helpmenu = [
@@ -65,34 +66,51 @@ const Footer = () => {
       title: "Japan Candy Box",
     },
   ];
+
+  const [loading, setLoading] = useState(false);
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm();
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = async (data) => {
+    console.log("hit");
+    setLoading(true);
+    try {
+      const response = await API.newsLetter(data);
+      successToast(response?.data?.message);
+      reset();
+      setLoading(false);
+    } catch (error) {
+      console.log(error);
+      setLoading(false);
+      errorToast(error, "Can not submit");
+    }
+  };
 
   return (
     <div className="Footer">
-      <Image
-        src={FooterImage}
-        width={1600}  
-        height={800}
-        quality={100}
-        className="w-full h-auto"
-        unoptimized  
-        alt="Footer Image"
-      />
+      <div className="footer-image-area h-[540px] md:h-[800px] bg-transparent bg-cover bg-no-repeat bg-bottom-center overflow-hidden relative flex justify-center items-end">
+        <Image
+          src={FooterDoor}
+          width={600}
+          height={400}
+          quality={100}
+          className="mx-auto z-10 relative w-[300px] h-[300px] md:w-[600px] md:h-auto"
+        />
+      </div>
       <div className="footer-inner bg-black py-9">
         <div className="container">
           <div className="flex gap-12 flex-col md:flex-row">
-            <div className="w-full md:w-[30%] text-center md:text-left flex justify-center md:justify-start flex-col">
+            <div className="w-full md:w-[30%] text-center md:text-left flex justify-center md:justify-start flex-col overflow-hidden">
               <Image
                 src={FooterLogo}
                 width={136}
                 height={136}
                 quality={100}
-                className="mb-10 mx-auto md:ml-0"
+                unoptimized
+                className="mb-10 mx-auto md:ml-0 "
               />
               <p className="text-white  rubick md:max-w-[322px] text-base">
                 Begin your experience with flexible pricing plans and worldwide
@@ -102,10 +120,15 @@ const Footer = () => {
             <div className="w-full md:w-[70%] text-center md:text-left">
               <div className="grid grid-cols-1 md:grid-cols-4 gap-5">
                 <div className="first-col">
-                  <h3 className="text-white font-medium text-lg mb-4 rubick">Help</h3>
+                  <h3 className="text-white font-medium text-lg mb-4 rubick">
+                    Help
+                  </h3>
                   <ul className="list-none">
                     {helpmenu.map((item, key) => (
-                      <li key={key} className="text-white mb-2 rubick text-base">
+                      <li
+                        key={key}
+                        className="text-white mb-2 rubick text-base"
+                      >
                         <Link href={item.link} className="font-normal">
                           {item.title}
                         </Link>
@@ -119,7 +142,10 @@ const Footer = () => {
                   </h3>
                   <ul className="list-none">
                     {aboutmenu.map((item, key) => (
-                      <li key={key} className="text-white mb-2 rubick text-base">
+                      <li
+                        key={key}
+                        className="text-white mb-2 rubick text-base"
+                      >
                         <Link href={item.link} className="font-normal">
                           {item.title}
                         </Link>
@@ -128,10 +154,15 @@ const Footer = () => {
                   </ul>
                 </div>
                 <div className="third-col">
-                  <h3 className="text-white font-medium text-lg mb-4 rubick">Shop</h3>
+                  <h3 className="text-white font-medium text-lg mb-4 rubick">
+                    Shop
+                  </h3>
                   <ul className="list-none">
                     {shopmenu.map((item, key) => (
-                      <li key={key} className="text-white mb-2 rubick text-base">
+                      <li
+                        key={key}
+                        className="text-white mb-2 rubick text-base"
+                      >
                         <Link href={item.link} className="font-normal">
                           {item.title}
                         </Link>
@@ -157,7 +188,13 @@ const Footer = () => {
                           },
                         })}
                       />
+                      {errors.email && (
+                        <span className="error text-red-500 text-sm mt-1">
+                          {errors.email.message}
+                        </span>
+                      )}
                       <button
+                        disabled={loading}
                         type="submit"
                         className="absolute right-2 top-1/2 transform -translate-y-1/2"
                         aria-label="Subscribe"

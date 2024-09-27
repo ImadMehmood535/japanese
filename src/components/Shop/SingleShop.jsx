@@ -5,7 +5,8 @@ import React from "react";
 import { IoPaperPlane } from "react-icons/io5";
 import { IoCheckmarkDone } from "react-icons/io5";
 
-const SingleShop = () => {
+const SingleShop = ({ product }) => {
+  console.log(product);
   const listpoints = [
     {
       text: "17 Item",
@@ -28,15 +29,15 @@ const SingleShop = () => {
       <div className="container">
         <div className="flex justify-between flex-wrap lg:flex-nowrap gap-6 md:gap-16  items-start">
           <div className="w-full md:w-[50] image-area lg:sticky top-32">
-            <Image
-              src={Productimage}
+            {/* <Image
+              src={product.imageUrl}
               width={1600}
               height={800}
               quality={100}
               className="w-full h-auto"
               unoptimized
               alt="Product banner"
-            />
+            /> */}
           </div>
           <div className="w-full md:w-[50] content-area py-6 flex flex-col gap-8 md:gap-16">
             <h2 className="text-black text-4xl md:text-6xl font-normal shadow1   text-center md:text-left gang">
@@ -89,9 +90,9 @@ const SingleShop = () => {
                       of replica team apparel. Show your support for Fernando
                       Alonso and his Aston Martin team through the 2024 with
                       this driver tee. Featuring the iconic team and sponsor
-                      branding on the chest, back and sleeves and Alonso&apos;s name
-                      and car number on the back there&apos;s no better way to show
-                      who you&apos;re cheering for at the circuit.
+                      branding on the chest, back and sleeves and Alonso&apos;s
+                      name and car number on the back there&apos;s no better way
+                      to show who you&apos;re cheering for at the circuit.
                     </p>
                   </div>
                 </div>

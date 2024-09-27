@@ -59,7 +59,7 @@ const LoginForm = () => {
                   <input
                     type="text"
                     name="email"
-                    className="w-full p-2 border border-[#B1B1B1] rounded-lg bg-white"
+                    className="w-full p-2 border border-[#B1B1B1] rounded-lg bg-white text-black"
                     placeholder="Email"
                     {...register("email")}
                   />
@@ -75,7 +75,7 @@ const LoginForm = () => {
                   <input
                     type={isShow ? "text" : "password"}
                     name="password"
-                    className="w-full p-2 border border-[#B1B1B1] rounded-lg bg-white"
+                    className="w-full p-2 border border-[#B1B1B1] rounded-lg bg-white text-black"
                     placeholder="Password"
                     {...register("password")}
                   />

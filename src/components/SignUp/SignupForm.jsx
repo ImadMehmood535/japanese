@@ -8,6 +8,8 @@ import { errorToast, successToast } from "@/hooks/useToast";
 import { useRouter } from "next/navigation";
 import { setCookie } from "@/hooks/cookies";
 import { API } from "@/api";
+import { SignUpSchema } from "@/validations/login";
+import { yupResolver } from "@hookform/resolvers/yup";
 
 const SignupForm = () => {
   const {
@@ -15,6 +17,7 @@ const SignupForm = () => {
     handleSubmit,
     formState: { errors },
   } = useForm();
+// } = useForm({ resolver: yupResolver(SignUpSchema) });
   const router = useRouter();
   const [loading, setLoading] = useState(false);
 
@@ -29,7 +32,7 @@ const SignupForm = () => {
       setLoading(false);
       setCookie("token", response?.data?.data?.token);
 
-      router.push("/shop");
+      router.push("/");
     } catch (error) {
       setLoading(false);
       errorToast(error, "Can not sign up at the moment");
@@ -46,19 +49,38 @@ const SignupForm = () => {
     <div className="signup-from py-8 md:py-14 mx-auto">
       <div className="container">
         <div className="max-w-[500px] mx-auto">
-        <h2 className="text-black text-4xl md:text-6xl font-normal shadow1 mb-10 md:mb-16 text-center gang">
+          <h2 className="text-black text-4xl md:text-6xl font-normal shadow1 mb-10 md:mb-16 text-center gang">
             Sign up
           </h2>
           <div className="formarea GeneralSans">
-            <form onSubmit={handleSubmit(onSubmit)}    className="flex flex-col gap-4">
+            <form
+              onSubmit={handleSubmit(onSubmit)}
+              className="flex flex-col gap-4"
+            >
               <div className="field-wrapper">
                 <div className="field-container relative ">
                   <input
                     type="text"
-                    name="name"
-                      className="w-full p-2 border border-[#B1B1B1] rounded-lg bg-white"
+                    name="firstName"
+                    className="w-full p-2 border border-[#B1B1B1] rounded-lg bg-white"
                     placeholder="Full Name"
-                    {...register("name", { required: true })}
+                    {...register("firstName", { required: true })}
+                  />
+                  {errors?.name && (
+                    <p className="text-sm text-red-800">
+                      Full name is required
+                    </p>
+                  )}
+                </div>
+              </div>
+              <div className="field-wrapper">
+                <div className="field-container relative ">
+                  <input
+                    type="text"
+                    name="lastName"
+                    className="w-full p-2 border border-[#B1B1B1] rounded-lg bg-white"
+                    placeholder="Full Name"
+                    {...register("lastName", { required: true })}
                   />
                   {errors?.name && (
                     <p className="text-sm text-red-800">
@@ -72,7 +94,7 @@ const SignupForm = () => {
                   <input
                     type="text"
                     name="email"
-                      className="w-full p-2 border border-[#B1B1B1] rounded-lg bg-white"
+                    className="w-full p-2 border border-[#B1B1B1] rounded-lg bg-white"
                     placeholder="Email"
                     {...register("email", { required: true })}
                   />
@@ -85,8 +107,8 @@ const SignupForm = () => {
                 <div className="field-container relative ">
                   <input
                     type="tel"
-                    name="phone"
-                      className="w-full p-2 border border-[#B1B1B1] rounded-lg bg-white"
+                    name="phoneNumber"
+                    className="w-full p-2 border border-[#B1B1B1] rounded-lg bg-white"
                     placeholder="Phone"
                     defaultValue="+971"
                     {...register("phoneNumber", { required: true })}
@@ -103,16 +125,13 @@ const SignupForm = () => {
                   <input
                     type={isShow ? "text" : "password"}
                     name="password"
-                      className="w-full p-2 border border-[#B1B1B1] rounded-lg bg-white"
+                    className="w-full p-2 border border-[#B1B1B1] rounded-lg bg-white"
                     placeholder="Password"
                     {...register("password", { required: true })}
                   />
                   <div className="absolute inset-y-0 right-0 pr-3 flex items-center leading-5 text-3xl">
                     {isShow ? (
-                      <FaEye
-                        onClick={handleShow}
-                        className="cursor-pointer"
-                      />
+                      <FaEye onClick={handleShow} className="cursor-pointer" />
                     ) : (
                       <FaEyeSlash
                         onClick={handleShow}
