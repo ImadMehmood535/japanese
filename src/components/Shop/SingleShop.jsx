@@ -29,7 +29,7 @@ const SingleShop = ({ product }) => {
       <div className="container">
         <div className="flex justify-between flex-wrap lg:flex-nowrap gap-6 md:gap-16  items-start">
           <div className="w-full md:w-[50] image-area lg:sticky top-32">
-            {/* <Image
+            <Image
               src={product.imageUrl}
               width={1600}
               height={800}
@@ -37,18 +37,19 @@ const SingleShop = ({ product }) => {
               className="w-full h-auto"
               unoptimized
               alt="Product banner"
-            /> */}
+            />
           </div>
           <div className="w-full md:w-[50] content-area py-6 flex flex-col gap-8 md:gap-16">
             <h2 className="text-black text-4xl md:text-6xl font-normal shadow1   text-center md:text-left gang">
-              Create your own Yokohama Box
+              {product.name}
             </h2>
             <div className="flex flex-col md:flex-row gap-4 md:gap-8 items-center  ">
               <h3 className="text-themeSecondary-0 font-medium text-2xl md:text-4xl  rubick text-center md:text-left">
-                $150
+                {product.price}
               </h3>
               <p className="text-black rubick text-2xl font-normal flex flex-row gap-2 items-center justify-center">
-                <IoPaperPlane className="text-[#ED1B24]" /> 50 Entries
+                <IoPaperPlane className="text-[#ED1B24]" /> {product.entries}{" "}
+                Entries
               </p>
             </div>
             <div className="flex">
@@ -84,16 +85,12 @@ const SingleShop = ({ product }) => {
                     </h4>
                   </div>
                   <div className="collapse-content  ">
-                    <p className="rubick text-lg">
-                      Wear your support for the Aston Martin Formula One team
-                      right through the 2024 F1 season with the official range
-                      of replica team apparel. Show your support for Fernando
-                      Alonso and his Aston Martin team through the 2024 with
-                      this driver tee. Featuring the iconic team and sponsor
-                      branding on the chest, back and sleeves and Alonso&apos;s
-                      name and car number on the back there&apos;s no better way
-                      to show who you&apos;re cheering for at the circuit.
-                    </p>
+                    <p
+                      className="rubick text-lg"
+                      dangerouslySetInnerHTML={{
+                        __html: product.shortDescription,
+                      }}
+                    />
                   </div>
                 </div>
                 <div className="collapse collapse-arrow join-item border-base-300 border-b-2 rounded-none ">
@@ -104,7 +101,7 @@ const SingleShop = ({ product }) => {
                     </h4>
                   </div>
                   <div className="collapse-content  ">
-                    <ul className="ze-list list-none">
+                    {/* <ul className="ze-list list-none">
                       {listpoints.map((item, key) => (
                         <li className="flex items-start  gap-4 mb-4" key={key}>
                           <IoCheckmarkDone className="text-themeSecondary-0 text-2xl" />
@@ -115,7 +112,13 @@ const SingleShop = ({ product }) => {
                           </div>
                         </li>
                       ))}
-                    </ul>
+                    </ul> */}
+                     <p
+                      className="rubick text-lg"
+                      dangerouslySetInnerHTML={{
+                        __html: product.longDescription,
+                      }}
+                    />
                   </div>
                 </div>
               </div>

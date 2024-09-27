@@ -95,11 +95,12 @@ const Page = async ({ params }) => {
       entries: 50,
     },
   ];
+
   return (
     <div className="product-page">
       <SingleProductBanner />
       <SingleShop product={product} />
-      <RelatedProducts  relatedProducts={relatedProducts}/>
+      <RelatedProducts relatedProducts={relatedProducts} />
       <ProductGift />
       <Review
         fetureimage={ShopReview}
