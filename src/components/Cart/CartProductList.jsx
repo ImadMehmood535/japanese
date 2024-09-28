@@ -3,32 +3,34 @@ import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { successToast } from "@/hooks/useToast";
-import { API } from "@/api";
 import { FaMinus, FaPlus } from "react-icons/fa";
 import { IoClose, IoPaperPlane } from "react-icons/io5";
 import { BsShieldFillCheck } from "react-icons/bs";
+import useProductStore from "@/store/products";
+
 const CartProductList = ({ cartitem, setTotal }) => {
   const [products, setProducts] = useState(cartitem);
   const [loading, setLoading] = useState(null);
-
-  const updateProduct = (updatedProduct) => {
-    setProducts((prevProducts) =>
-      prevProducts?.map((product) =>
-        product.id === updatedProduct.id
-          ? { ...product, quantity: updatedProduct?.quantity }
-          : product
-      )
-    );
-  };
+  const { removeFromCart, updateProduct } = useProductStore();
 
   const handleIncrement = async (productId) => {
     setLoading(true);
     try {
       const product = products?.find((product) => product?.id === productId);
-      updateProduct({ id: productId, quantity: product?.quantity + 1 });
-      await API.updateCartItem(productId, {
-        quantity: product?.quantity + 1,
-      });
+      if (product) {
+        const updatedQuantity = product?.quantity + 1;
+        const updatedProduct = { ...product, quantity: updatedQuantity };
+
+        // Update in local state
+        setProducts((prevProducts) =>
+          prevProducts.map((prod) =>
+            prod.id === productId ? updatedProduct : prod
+          )
+        );
+
+        // Update in the store
+        updateProduct(updatedProduct);
+      }
       setLoading(false);
     } catch (error) {
       console.log(error);
@@ -37,15 +39,22 @@ const CartProductList = ({ cartitem, setTotal }) => {
   };
 
   const handleDecrement = async (productId) => {
+    setLoading(true);
     try {
       const product = products.find((product) => product?.id === productId);
-      if (product.quantity > 1) {
-        setLoading(true);
+      if (product && product.quantity > 1) {
+        const updatedQuantity = product?.quantity - 1;
+        const updatedProduct = { ...product, quantity: updatedQuantity };
 
-        updateProduct({ id: productId, quantity: product?.quantity - 1 });
-        await API.updateCartItem(productId, {
-          quantity: product?.quantity - 1,
-        });
+        // Update in local state
+        setProducts((prevProducts) =>
+          prevProducts.map((prod) =>
+            prod.id === productId ? updatedProduct : prod
+          )
+        );
+
+        // Update in the store
+        updateProduct(updatedProduct);
       }
       setLoading(false);
     } catch (error) {
@@ -65,13 +74,12 @@ const CartProductList = ({ cartitem, setTotal }) => {
   const handleRemove = async (id) => {
     setLoading(true);
     try {
-      await API.removeItem(id);
+      removeFromCart(id);
       setProducts(products?.filter((item) => item?.id != id));
       setLoading(false);
       successToast("Successfully removed item from your cart");
     } catch (error) {
       setLoading(false);
-
       console.log(error);
     }
   };
@@ -81,7 +89,7 @@ const CartProductList = ({ cartitem, setTotal }) => {
       <div className="flex justify-between flex-col md:flex-row">
         <div className="w-full">
           <div className="flex mb-5 py-5 border-b-1 bg-[#EEEEEE] px-4">
-            <h3 className="font-normal text-sm capitalize w-2/5 text-lef rubick text-black">
+            <h3 className="font-normal text-sm capitalize w-2/5 text-left rubick text-black">
               Products
             </h3>
             <h3 className="font-normal text-sm capitalize w-1/5 hidden sm:block text-center rubick text-black">
@@ -95,13 +103,12 @@ const CartProductList = ({ cartitem, setTotal }) => {
             </h3>
           </div>
 
-          {/* {cartitem?.map((item, index) => ( */}
           {products?.map((item, index) => (
             <div
               key={index}
               className={`${
                 loading ? "opacity-30" : ""
-              } hover:bg-[#EEEEEE] py-4 px-4 border-b-1 -mx-1 bg-white border `}
+              } hover:bg-[#EEEEEE] py-4 px-4 border-b-1 -mx-1 bg-white border`}
             >
               <div className="flex flex-wrap rubick flex-col sm:flex-row items-start sm:items-center">
                 <div className="flex justify-start items-center w-full sm:w-2/5">
@@ -126,8 +133,8 @@ const CartProductList = ({ cartitem, setTotal }) => {
                     <b>Price</b>
                   </div>
                   <div className="flex flex-col gap-3">
-                    <span className="text-center text-black text-lg font-semibold   ">
-                      <span className="price">$ {item?.price}</span>
+                    <span className="text-center text-black text-lg font-semibold">
+                      <span className="price">{item?.price}</span>
                     </span>
                     <p className="text-black rubick text-sm font-normal flex flex-row gap-2 items-center justify-center">
                       <IoPaperPlane className="text-[#ED1B24]" />
@@ -136,10 +143,10 @@ const CartProductList = ({ cartitem, setTotal }) => {
                   </div>
                 </div>
                 <div className="QuantitySelector flex w-full sm:w-1/5 px-5 sm:px-0 my-3 sm:justify-center">
-                  <div className="w-fit   flex justify-center items-center gap-2 px-2 py-1 bg-themeGray-0 border-[2.5px] border-[#E4E7ED]">
+                  <div className="w-fit flex justify-center items-center gap-2 px-2 py-1 bg-themeGray-0 border-[2.5px] border-[#E4E7ED]">
                     <button
                       type="button"
-                      className={`group transition-all cursor-pointer w-[35px] h-[35px]   flex justify-center items-center hover:bg-[#cccccc]  `}
+                      className={`group transition-all cursor-pointer w-[35px] h-[35px] flex justify-center items-center hover:bg-[#cccccc]`}
                       onClick={() => handleDecrement(item?.id)}
                     >
                       <FaMinus className="text-black group-hover:text-themeSecondary-0 font-normal text-sm" />
@@ -152,7 +159,7 @@ const CartProductList = ({ cartitem, setTotal }) => {
                     />
                     <button
                       type="button"
-                      className={`group transition-all cursor-pointer w-[35px] h-[35px]   flex justify-center items-center hover:bg-[#cccccc]  `}
+                      className={`group transition-all cursor-pointer w-[35px] h-[35px] flex justify-center items-center hover:bg-[#cccccc]`}
                       onClick={() => handleIncrement(item?.id)}
                     >
                       <FaPlus className="text-black group-hover:text-themeSecondary-0 font-normal text-sm" />
@@ -179,16 +186,8 @@ const CartProductList = ({ cartitem, setTotal }) => {
             </div>
           ))}
 
-          {/* <div className="flex flex-wrap items-center justify-between mt-5">
-            <Link
-              href="/sale"
-              className="flex rubick font-semibold text-sm bg-[#121212] text-white py-3 px-6 rounded-full items-center gap-2"
-            >
-              Back To Shop
-            </Link>
-          </div> */}
           <div className="flex flex-row gap-4 items-center mt-4">
-          <BsShieldFillCheck className="text-black text-2xl"/>
+            <BsShieldFillCheck className="text-black text-2xl" />
             <p>Secure shopping guarantee</p>
           </div>
         </div>

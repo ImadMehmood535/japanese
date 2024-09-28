@@ -1,4 +1,5 @@
-import { Productimage } from "@/assets";
+"use client";
+import useProductStore from "@/store/products";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
@@ -6,24 +7,8 @@ import { IoPaperPlane } from "react-icons/io5";
 import { IoCheckmarkDone } from "react-icons/io5";
 
 const SingleShop = ({ product }) => {
-  console.log(product);
-  const listpoints = [
-    {
-      text: "17 Item",
-    },
-    {
-      text: "4 Drinks",
-    },
-    {
-      text: "5 Chips",
-    },
-    {
-      text: "4 Cookies",
-    },
-    {
-      text: "4 Candy",
-    },
-  ];
+  const { addToCart } = useProductStore();
+
   return (
     <div className="SingleShop relative z-10 bg-gradient-to-b from-[#DCDBD7] via-[#dcdbd76b] via-30% to-{#DCDBD7]">
       <div className="container">
@@ -55,6 +40,7 @@ const SingleShop = ({ product }) => {
             <div className="flex">
               <Link
                 href={"/cart"}
+                onClick={() => addToCart(product)}
                 className=" rubick group  text-white py-4 px-12 bg-themeSecondary-0  rounded-sm flex flex-row gap-2 items-center transition-all duration-700 w-auto font-medium text-base uppercase"
               >
                 Add to Cart
@@ -101,19 +87,19 @@ const SingleShop = ({ product }) => {
                     </h4>
                   </div>
                   <div className="collapse-content  ">
-                    {/* <ul className="ze-list list-none">
-                      {listpoints.map((item, key) => (
+                    <ul className="ze-list list-none">
+                      {product?.productDetails?.map((item, key) => (
                         <li className="flex items-start  gap-4 mb-4" key={key}>
                           <IoCheckmarkDone className="text-themeSecondary-0 text-2xl" />
                           <div className="w-[80%]">
                             <p className="text-black font-normal text-lg md:text-xl">
-                              {item.text}
+                              {item.name}
                             </p>
                           </div>
                         </li>
                       ))}
-                    </ul> */}
-                     <p
+                    </ul>
+                    <p
                       className="rubick text-lg"
                       dangerouslySetInnerHTML={{
                         __html: product.longDescription,

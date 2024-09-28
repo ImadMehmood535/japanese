@@ -5,15 +5,7 @@ import RelatedProducts from "@/components/Shop/RelatedProducts";
 import React from "react";
 
 const Index = () => {
-  const cartitem = [
-    {
-      imageUrl: Productimage,
-      name: "Create your own Yokohama Box",
-      price: 125,
-      quantity: 1,
-      entries: 25,
-    },
-  ];
+
   const relatedProducts = [
     {
       image: Productimage,
@@ -51,8 +43,8 @@ const Index = () => {
   return (
     <div className="term-n-condition">
       <InnerHeader pageTitle="Cart" />
-      <CartComponent cartitem={cartitem} />
-      <RelatedProducts  relatedProducts={relatedProducts}/>
+      <CartComponent  />
+      <RelatedProducts relatedProducts={relatedProducts} />
     </div>
   );
 };

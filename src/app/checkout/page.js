@@ -7,14 +7,10 @@ export const metadata = {
   description: "This is a checkout page",
 };
 
-const Index = ({ searchParams }) => {
-  const type = searchParams.type;
-  const payload =  searchParams.payload;
-
+const Index = () => {
   return (
     <div className="checkout">
-      {/* <InnerpageHeader pagetitle="Checkout" /> */}
-      <CheckoutComponent type={type} makeYourMix={payload} />
+      <CheckoutComponent />
     </div>
   );
 };

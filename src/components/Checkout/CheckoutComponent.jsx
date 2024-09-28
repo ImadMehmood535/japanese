@@ -11,35 +11,10 @@ import { errorToast, successToast } from "@/hooks/useToast";
 import { useRouter } from "next/navigation";
 import { options } from "@/data/cities";
 import { setCookie } from "@/hooks/cookies";
+import useProductStore from "@/store/products";
 
-const CheckoutComponent = ({ type, makeYourMix }) => {
-  const [customProduct, setCustomProduct] = useState(null);
-  const [paymentMode, setPaymentMode] = useState("COD");
-
-  useEffect(() => {
-    if (makeYourMix) {
-      setCustomProduct(JSON.parse(makeYourMix));
-    }
-  }, [makeYourMix]);
-
-  const [cartData, setCartData] = useState(null);
-  const router = useRouter();
-
-  const getData = async () => {
-    try {
-      const response = await API.getCartData();
-      setCartData(response?.data?.data);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  useEffect(() => {
-    if (type === "general") {
-      getData();
-    }
-  }, []);
-
+const CheckoutComponent = () => {
+  const { products } = useProductStore();
   const {
     register,
     handleSubmit,
@@ -53,67 +28,11 @@ const CheckoutComponent = ({ type, makeYourMix }) => {
 
   const [loading, setLoadiong] = useState(false);
 
-  const [city, setCity] = useState(null);
-
-  useEffect(() => {
-    setCity(getValues("country"));
-  }, [watch("country")]);
-
   const [total, setTotal] = useState(0);
 
-  const filterDeliveryPrice = options?.find((item) => item?.name === city);
-
   const onSubmit = async (data) => {
-    console.log(data, "Data");
     setLoadiong(true);
     try {
-      if (type === "general") {
-        const payload = {
-          customerData: data,
-          paymentMode: paymentMode,
-          totalPrice: parseFloat(total).toFixed(2),
-          deliveryCharges: parseFloat(filterDeliveryPrice?.price).toFixed(2),
-          orderItems: cartData?.map((item) => {
-            return {
-              variationId: item?.variationId,
-              quantity: item?.quantity,
-            };
-          }),
-        };
-        const response = await API.placeOrder(payload);
-        successToast(response?.data?.message);
-        if (paymentMode === "ONLINE") {
-          setCookie("invoiceId", response?.data?.data?.invoiceId);
-          window.location.assign(response?.data?.data?.url);
-        } else {
-          router.push("/shop");
-        }
-      } else if (type === "custom") {
-        const payload = {
-          customerData: data,
-          paymentMode: paymentMode,
-          totalPrice: parseFloat(customProduct?.totalPrice).toFixed(2),
-          deliveryCharges: parseFloat(filterDeliveryPrice?.price).toFixed(2),
-          customOrderItems: customProduct?.customOrderItems?.map((item) => {
-            return {
-              grams: item?.grams,
-              flavorItemId: item?.flavorItemId,
-            };
-          }),
-        };
-
-        const response = await API.placeCustomOrder(payload);
-        successToast(response?.data?.message);
-        if (paymentMode === "ONLINE") {
-          setCookie("invoiceId", response?.data?.data?.invoiceId);
-          window.location.assign(response?.data?.data?.url);
-        } else {
-          router.push("/shop");
-        }
-      }
-
-      reset();
-      setLoadiong(false);
     } catch (error) {
       console.error("Error submitting order:", error);
       setLoadiong(false);
@@ -136,13 +55,9 @@ const CheckoutComponent = ({ type, makeYourMix }) => {
               </div>
               <div className="w-full md:w-[35%]">
                 <CheckoutTotal
-                  setPaymentMode={setPaymentMode}
-                  paymentMode={paymentMode}
                   setTotal={setTotal}
-                  filterDeliveryPrice={filterDeliveryPrice}
                   loading={loading}
-                  type={type}
-                  cartitem={type === "general" ? cartData : customProduct}
+                  cartitem={products}
                   onSubmit={handleSubmit(onSubmit)}
                 />
               </div>
