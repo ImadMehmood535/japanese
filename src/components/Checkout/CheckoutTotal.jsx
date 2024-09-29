@@ -1,20 +1,54 @@
 "use client";
+import { API } from "@/api";
 import { options } from "@/data/cities";
 import { Button } from "@nextui-org/react";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
+import { useForm } from "react-hook-form";
 
 const CheckoutTotal = ({
   cartitem,
   onSubmit,
   loading,
-  type,
-  filterDeliveryPrice,
+  setPromoData,
   setTotal,
-  setPaymentMode,
-  paymentMode,
 }) => {
   const [subtotal, setSubtotal] = useState(0);
+  const [promoError, setPromoError] = useState("");
+  const [promoPrice, setPromoPrice] = useState(null);
+
+  const { register, getValues, watch } = useForm();
+
+  const handleApplyPromo = async () => {
+    const code = getValues("promoCode");
+
+    try {
+      if (code) {
+        const response = await API.promoPrice({
+          name: code,
+          totalPrice: subtotal,
+        });
+
+        setPromoPrice(response?.data?.data);
+        setTotal(response?.data?.data);
+        setPromoError("");
+        setPromoData({
+          used: true,
+          name: code,
+        });
+      } else {
+        setPromoError("Please enter code");
+      }
+    } catch (error) {
+      setPromoData({
+        used: false,
+        name: "",
+      });
+      setPromoError(error?.response?.data?.message);
+      setPromoPrice(null);
+      setTotal(subtotal);
+    }
+  };
 
   useEffect(() => {
     const amount = cartitem?.reduce(
@@ -52,24 +86,42 @@ const CheckoutTotal = ({
           </div>
         ))}
 
-        <div className="flex justify-between mt-10 mb-5">
-          <span className="font-semibold text-sm uppercase">Shipping</span>
-          <span className="font-semibold text-sm">
-            {filterDeliveryPrice?.price}
-          </span>
+        <div className="w-full relative">
+          <input
+            type="text"
+            placeholder="Add promo code (Optional)"
+            className={`w-full placeholder:text-[14px] px-4 py-4 focus:outline-none focus:ring-2 focus:ring-black
+                border border-gray-300 ${
+                  promoError?.length > 5 ? "border-red-400" : ""
+                } 
+                ${promoPrice ? "border-green-600" : ""}
+                rounded-md`}
+            {...register("promoCode")}
+          />
+          <button
+            onClick={handleApplyPromo}
+            className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-[#FC4242] text-white hover:bg-[#ce3b3bfa] text-sm px-4 py-3 rounded-md font-semibold transition duration-300 ease-in-out"
+            type="button"
+          >
+            Apply Promo
+          </button>
         </div>
+
+        {promoError && (
+          <p className="text-red-400 text-tiny pt-2">{promoError}</p>
+        )}
 
         <div className="border-t mt-8">
           <div className="flex font-semibold justify-between py-6 text-sm uppercase">
             <span>Subtotal</span>
-            <span>$ {(subtotal + filterDeliveryPrice?.price).toFixed(2)}</span>
+            <span>$ {promoPrice ? promoPrice : subtotal.toFixed(2)}</span>
           </div>
 
           <Button
             type="submit"
             isLoading={loading}
             onClick={onSubmit}
-            className="w-full bg-themeSecondary-0 text-white py-2 px-4 rounded-lg hover:bg-black transition duration-300 mb-2"
+            className="w-full bg-themeSecondary-0 text-white py-2 px-4 rounded-lg hover:bg-black   mb-2"
           >
             Checkout
           </Button>

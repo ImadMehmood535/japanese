@@ -1,4 +1,4 @@
-import axios from "axios"; 
+import axios from "axios";
 import Cookies from "js-cookie";
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL_SERVER;
@@ -97,6 +97,10 @@ API.newsLetter = (data) => {
 // contact-form
 API.contact = (data) => {
   return API.post("/contact", data);
+};
+
+API.promoPrice = (data) => {
+  return API.post("/promo/calculate", data);
 };
 
 export { API };

@@ -14,7 +14,7 @@ import { setCookie } from "@/hooks/cookies";
 import useProductStore from "@/store/products";
 
 const CheckoutComponent = () => {
-  const { products } = useProductStore();
+  const { products, clearCart } = useProductStore();
   const {
     register,
     handleSubmit,
@@ -22,17 +22,35 @@ const CheckoutComponent = () => {
     getValues,
     watch,
     formState: { errors },
-  } = useForm({
-    resolver: yupResolver(checkoutSchema),
-  });
+  } = useForm();
+  // } = useForm({
+  //   resolver: yupResolver(checkoutSchema),
+  // });
 
   const [loading, setLoadiong] = useState(false);
 
   const [total, setTotal] = useState(0);
-
+  const [promodata, setPromoData] = useState({
+    used: false,
+    name: "",
+  });
   const onSubmit = async (data) => {
     setLoadiong(true);
     try {
+      const payload = {
+        promoData: promodata,
+        totalPrice: total,
+        orderItems: products?.map((item) => {
+          return {
+            id: item?.id,
+            quantity: item?.quantity,
+            price: item?.price,
+          };
+        }),
+      };
+      await API.placeOrder(payload);
+
+      clearCart();
     } catch (error) {
       console.error("Error submitting order:", error);
       setLoadiong(false);
@@ -47,17 +65,18 @@ const CheckoutComponent = () => {
           <form className="w-full" onSubmit={handleSubmit(onSubmit)}>
             <div className="flex flex-col md:flex-row justify-between gap-16">
               <div className="w-full md:w-[65%]">
-                <CheckoutForm
+                {/* <CheckoutForm
                   register={register}
                   errors={errors}
                   options={options}
-                />
+                /> */}
               </div>
               <div className="w-full md:w-[35%]">
                 <CheckoutTotal
                   setTotal={setTotal}
                   loading={loading}
                   cartitem={products}
+                  setPromoData={setPromoData}
                   onSubmit={handleSubmit(onSubmit)}
                 />
               </div>

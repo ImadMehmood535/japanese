@@ -27,8 +27,8 @@ const LoginForm = () => {
     try {
       const response = await API.logInUser(data);
       successToast("Continue shopping now");
-      setLoading(false);
       setCookie("token", response?.data?.data?.token);
+      setLoading(false);
       router.push("/");
     } catch (error) {
       setLoading(false);

@@ -29,9 +29,9 @@ const SignupForm = () => {
 
       const response = await API.registerUser(data);
       successToast("You can continue shopping now");
-      setLoading(false);
       setCookie("token", response?.data?.data?.token);
-
+      
+      setLoading(false);
       router.push("/");
     } catch (error) {
       setLoading(false);

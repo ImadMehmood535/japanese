@@ -1,9 +1,9 @@
 import { create } from "zustand";
 
- const isBrowser = typeof window !== "undefined";
+const isBrowser = typeof window !== "undefined";
 
 const useProductStore = create((set) => {
-   const storedProducts = isBrowser
+  const storedProducts = isBrowser
     ? JSON.parse(localStorage.getItem("products")) || []
     : [];
 
@@ -12,12 +12,23 @@ const useProductStore = create((set) => {
 
     addToCart: (product) =>
       set((state) => {
-        const updatedProduct = {
-          ...product,
-          quantity: product.quantity ? product?.quantity : 1,
-        };
+        const existingProduct = state.products.find(
+          (p) => p.id === product.id
+        );
 
-        const updatedProducts = [...state.products, updatedProduct];
+        let updatedProducts;
+
+        if (existingProduct) {
+           updatedProducts = state.products.map((p) =>
+            p.id === product.id
+              ? { ...p, quantity: p.quantity + (product.quantity || 1) }
+              : p
+          );
+        } else {
+           const newProduct = { ...product, quantity: product.quantity || 1 };
+          updatedProducts = [...state.products, newProduct];
+        }
+
         localStorage.setItem("products", JSON.stringify(updatedProducts));
         return { products: updatedProducts };
       }),
