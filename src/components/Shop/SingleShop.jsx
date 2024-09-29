@@ -5,9 +5,19 @@ import Link from "next/link";
 import React from "react";
 import { IoPaperPlane } from "react-icons/io5";
 import { IoCheckmarkDone } from "react-icons/io5";
+import { IoMdStar } from "react-icons/io";
 
 const SingleShop = ({ product }) => {
   const { addToCart } = useProductStore();
+  const reviews = [
+    {
+      name: "Casey Morgan",
+      date: "7 days ago",
+      rating: 5,
+      comment: "Amazing and original",
+    },
+    { name: "Sam Ellis", date: "2 days ago", rating: 5, comment: "" },
+  ];
 
   return (
     <div className="SingleShop relative z-10 bg-gradient-to-b from-[#DCDBD7] via-[#dcdbd76b] via-30% to-{#DCDBD7]">
@@ -105,6 +115,76 @@ const SingleShop = ({ product }) => {
                         __html: product.longDescription,
                       }}
                     />
+                  </div>
+                </div>
+                <div className="collapse collapse-arrow join-item border-base-300 border-b-2 rounded-none">
+                  <input type="radio" name="my-accordion-2" />
+                  <div className="collapse-title font-medium">
+                    <h4 className="uppercase text-black rubick text-4xl">
+                      Reviews
+                    </h4>
+                  </div>
+                  <div className="collapse-content relative">
+                    <div className="w-full max-h-[250px] overflow-y-scroll pr-4">
+                      <div className="flex  mb-4 justify-between items-center">
+                        <div className="flex items-center">
+                          <span className="text-xl font-bold mr-1">4.5</span>
+                          <span className="text-gray-500 mr-1">/5</span>
+                          <IoMdStar className="w-5 h-5 text-yellow-400 fill-current" />
+                        </div>
+                        <span className="text-gray-500 ml-2">
+                          {reviews.length} Reviews
+                        </span>
+                      </div>
+
+                      <div className="flex mb-4 overflow-x-auto">
+                        {[1, 2, 3].map((_, index) => (
+                          <div
+                            key={index}
+                            className="w-16 h-16 bg-gray-200 mr-2 flex-shrink-0"
+                          >
+                            <img
+                              src="/api/placeholder/64/64"
+                              alt="Product"
+                              className="w-full h-full object-cover"
+                            />
+                          </div>
+                        ))}
+                        <div className="w-16 h-16 bg-gray-800 flex items-center justify-center text-white">
+                          See All
+                        </div>
+                      </div>
+
+                      <div className="space-y-4">
+                        {reviews.map((review, index) => (
+                          <div key={index} className="border-b pb-4">
+                            <div className="flex justify-between items-center mb-2">
+                              <span className="font-semibold">
+                                {review.name}
+                              </span>
+                              <span className="text-gray-500 text-sm">
+                                {review.date}
+                              </span>
+                            </div>
+                            <div className="flex mb-2">
+                              {[...Array(5)].map((_, i) => (
+                                <IoMdStar
+                                  key={i}
+                                  className={`w-4 h-4 ${
+                                    i < review.rating
+                                      ? "text-yellow-400 fill-current"
+                                      : "text-gray-300"
+                                  }`}
+                                />
+                              ))}
+                            </div>
+                            {review.comment && (
+                              <p className="text-gray-700">{review.comment}</p>
+                            )}
+                          </div>
+                        ))}
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>

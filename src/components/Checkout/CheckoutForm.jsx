@@ -1,145 +1,182 @@
-import React, { useEffect, useState } from "react"; 
+import React from "react";
 
 const CheckoutForm = ({ errors, register, options }) => {
   return (
     <div className="CheckoutForm GeneralSans">
-      {/* <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 mb-2">
-        <InputField
-          label="First Name"
-          type="text"
-          placeholder="Enter your first name"
-          errors={errors}
-          name="fname"
-          register={register}
-        />
-        <InputField
-          label="Last Name"
-          type="text"
-          placeholder="Enter your last name"
-          errors={errors}
-          name="lname"
-          register={register}
-        />
-      </div> */}
-      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 mb-2">
-        <input
-          label="Full Name"
-          type="text"
-          placeholder="Enter your first name"
-          className="w-full p-2 border border-[#B1B1B1] rounded-lg bg-white text-black"
-          {...register("firstName")}
-        />
-        <input
-          label="Full Name"
-          type="text"
-          placeholder="Enter your last name"
-          className="w-full p-2 border border-[#B1B1B1] rounded-lg bg-white text-black"
-          {...register("lastName")}
-        />
-      </div>
-      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 mb-2">
-        <input
-          label="Email"
-          type="email"
-          placeholder="Enter your email address"
-          className="w-full p-2 border border-[#B1B1B1] rounded-lg bg-white text-black"
-          {...register("email")}
-        />
-        <input
-          label="Phone"
-          type="tel"
-          placeholder="Enter your phone number"
-          className="w-full p-2 border border-[#B1B1B1] rounded-lg bg-white text-black"
-          {...register("phone")}
-        />
-      </div>
-      {/* <div className="grid grid-cols-1 gap-4">
-        <InputField
-          label="Your Email"
-          type="email"
-          placeholder="Enter your email"
-          errors={errors}
-          name="email"
-          register={register}
-        />
-      </div>
-      <div className="grid grid-cols-1 gap-4">
-        <InputField
-          label="Your Phone"
-          type="tel"
-          placeholder="Enter your phone number"
-          errors={errors}
-          name="phone"
-          register={register}
-        />
-      </div>
-      <div className="mt-2 h-full">
-        <InputField
-          label="Company Name"
-          type="text"
-          placeholder="Enter your company name "
-          errors={errors}
-          name="company"
-          register={register}
-        />
-      </div>
-      <div className="mt-2 h-full">
-        <h4>Address</h4>
-        <InputField
-          type="text"
-          placeholder="Street Address"
-          errors={errors}
-          name="street"
-          register={register}
-        />
-        <InputField
-          type="text"
-          placeholder="appartment, suite, unit etc"
-          errors={errors}
-          name="appartment"
-          register={register}
-        />
-        <div className="mt-2 w-full h-full select-wrapper relative">
-          <select
-            name="country"
-            className="select-box w-full py-4 px-4 pr-12 rounded-full custom-input-design border-1 border-[#EBEBEB] hover:border-[#3F7FAE] appearance-none"
-            {...register("country")}
-          >
-            <option value="" disabled>
-              Select an option
-            </option>
-            {options.map((option, index) => (
-              <option key={index} value={option.name}>
-                {option.name}
-              </option>
-            ))}
-          </select>
-          <div className="pointer-events-none absolute inset-y-0 right-4 flex items-center">
-            <svg
-              className="h-5 w-5 text-gray-400"
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 20 20"
-              fill="currentColor"
-              aria-hidden="true"
-            >
-              <path
-                fillRule="evenodd"
-                d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                clipRule="evenodd"
-              />
-            </svg>
+      {/* Contact Section */}
+      <div className="contact-section">
+        <h2 className="uppercase text-black rubick text-4xl font-semibold mb-4">
+          Contact
+        </h2>
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-1 mb-2">
+          <div className="field-container relative  ">
+            <input
+              label="Email"
+              type="email"
+              placeholder="Enter your email address"
+              className="w-full p-2 border border-[#B1B1B1] rounded-lg bg-white text-black bg-transparent focus:bg-transprent "
+              {...register("email")}
+            />
+            {errors?.email && (
+              <p className="text-sm text-red-800">{errors?.email?.message}</p>
+            )}
           </div>
-          {errors && errors?.country && (
-            <p className="text-tiny text-danger pl-2 mt-1">
-              {errors?.country.message}
-            </p>
-          )}
+          <div className="flex items-center">
+            <input
+              type="checkbox"
+              id="email-offers"
+              {...register("emailOffers")}
+              className="mr-2 bg-transparent focus:bg-transprent  "
+            />
+            <label htmlFor="email-offers" className="text-black">
+              <span role="img" aria-label="trophy">
+                🏆
+              </span>{" "}
+              Email me with Winner Announcements and Offers
+            </label>
+          </div>
         </div>
-      </div> */}
+      </div>
 
+      {/* Delivery Section */}
+      <div className="delivery-section mt-6">
+        <h2 className="uppercase text-black rubick text-4xl font-semibold mb-4">
+          Delivery
+        </h2>
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-1 mb-2">
+          <div className="field-container relative  ">
+            <select
+              className="w-full p-2 border border-[#B1B1B1] rounded-lg bg-white text-black bg-transparent focus:bg-transprent "
+              {...register("country")}
+            >
+              <option value="">Country/Region</option>
+              {options?.map((option) => (
+                <option
+                  className="text-black bg-transparent focus:bg-transprent  "
+                  key={option.name}
+                  value={option.name}
+                >
+                  {option.name}
+                </option>
+              ))}
+            </select>
+            {errors?.country && (
+              <p className="text-sm text-red-800">{errors?.country?.message}</p>
+            )}
+          </div>
+        </div>
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 mb-2">
+          <div className="field-container relative  ">
+            <input
+              type="text"
+              placeholder="First name"
+              className="w-full p-2 border border-[#B1B1B1] rounded-lg bg-white text-black bg-transparent focus:bg-transprent "
+              {...register("firstName")}
+            />
+            {errors?.firstName && (
+              <p className="text-sm text-red-800">
+                {errors?.firstName?.message}
+              </p>
+            )}
+          </div>
+
+          <div className="field-container relative  ">
+            <input
+              type="text"
+              placeholder="Last name"
+              className="w-full p-2 border border-[#B1B1B1] rounded-lg bg-white text-black bg-transparent focus:bg-transprent "
+              {...register("lastName")}
+            />
+            {errors?.lastName && (
+              <p className="text-sm text-red-800">
+                {errors?.lastName?.message}
+              </p>
+            )}
+          </div>
+        </div>
+        <div className="mb-2">
+          <div className="field-container relative  ">
+            <input
+              type="text"
+              placeholder="Address"
+              className="w-full p-2 border border-[#B1B1B1] rounded-lg bg-white text-black bg-transparent focus:bg-transprent "
+              {...register("address")}
+            />
+            {errors?.address && (
+              <p className="text-sm text-red-800">{errors?.address?.message}</p>
+            )}
+          </div>
+        </div>
+        <div className="mb-2">
+          <div className="field-container relative  ">
+            <input
+              type="text"
+              placeholder="Apartment #, Etc (optional)"
+              className="w-full p-2 border border-[#B1B1B1] rounded-lg bg-white text-black bg-transparent focus:bg-transprent "
+              {...register("apartment")}
+            />
+            {errors?.apartment && (
+              <p className="text-sm text-red-800">
+                {errors?.apartment?.message}
+              </p>
+            )}
+          </div>
+        </div>
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-3 mb-2">
+          <div className="field-container relative  ">
+            <input
+              type="text"
+              placeholder="City"
+              className="w-full p-2 border border-[#B1B1B1] rounded-lg bg-white text-black bg-transparent focus:bg-transprent "
+              {...register("city")}
+            />
+            {errors?.city && (
+              <p className="text-sm text-red-800">{errors?.city?.message}</p>
+            )}
+          </div>
+          <div className="field-container relative  ">
+            <select
+              className="w-full p-2 border border-[#B1B1B1] rounded-lg bg-white text-black bg-transparent focus:bg-transprent "
+              {...register("state")}
+            >
+              <option value="">State</option>
+              {/* Add state options here */}
+            </select>
+            {errors?.state && (
+              <p className="text-sm text-red-800">{errors?.state?.message}</p>
+            )}
+          </div>
+          <div className="field-container relative  ">
+            <input
+              type="text"
+              placeholder="ZIP code"
+              className="w-full p-2 border border-[#B1B1B1] rounded-lg bg-white text-black bg-transparent focus:bg-transprent "
+              {...register("zipCode")}
+            />
+             {errors?.zipCode && (
+              <p className="text-sm text-red-800">{errors?.zipCode?.message}</p>
+            )}
+          </div>
+        </div>
+        <div className="mb-2">
+          <div className="field-container relative  ">
+            <input
+              type="tel"
+              placeholder="Phone"
+              className="w-full p-2 border border-[#B1B1B1] rounded-lg bg-white text-black bg-transparent focus:bg-transprent "
+              {...register("phone")}
+            />
+            {errors?.phone && (
+              <p className="text-sm text-red-800">{errors?.phone?.message}</p>
+            )}
+          </div>
+        </div>
+      </div>
+
+      {/* Submit button (can be added back when needed) */}
       {/* <div className="py-3">
-          <ButtonComponent type={"submit"} text="Submit" isActive={true} />
-        </div> */}
+        <ButtonComponent type={"submit"} text="Submit" isActive={true} />
+      </div> */}
     </div>
   );
 };

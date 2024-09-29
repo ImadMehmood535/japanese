@@ -22,10 +22,10 @@ const CheckoutComponent = () => {
     getValues,
     watch,
     formState: { errors },
-  } = useForm();
-  // } = useForm({
-  //   resolver: yupResolver(checkoutSchema),
-  // });
+  // } = useForm();
+  } = useForm({
+    resolver: yupResolver(checkoutSchema),
+  });
 
   const [loading, setLoadiong] = useState(false);
 
@@ -65,11 +65,11 @@ const CheckoutComponent = () => {
           <form className="w-full" onSubmit={handleSubmit(onSubmit)}>
             <div className="flex flex-col md:flex-row justify-between gap-16">
               <div className="w-full md:w-[65%]">
-                {/* <CheckoutForm
+                <CheckoutForm
                   register={register}
                   errors={errors}
                   options={options}
-                /> */}
+                />
               </div>
               <div className="w-full md:w-[35%]">
                 <CheckoutTotal

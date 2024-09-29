@@ -4,30 +4,14 @@ import PropTypes from "prop-types";
 import Link from "next/link";
 import Image from "next/image";
 import { API } from "@/api";
+import useProductStore from "@/store/products";
 
 const CartSideBar = ({ isOpen, onClose }) => {
   const [cartItems, setCartItems] = useState(null);
+  const { products } = useProductStore();
   const [total , setTotal] = useState(0)
 
-  const getData = async () => {
-    try {
-      const response = await API.getCartData();
-      setCartItems(response?.data?.data);
-
-      let totalPrice = 0;
-      response?.data?.data?.forEach((item) => {
-        totalPrice += item?.price * item?.quantity;
-      });
-      setTotal(totalPrice);
-
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  useEffect(() => {
-    getData();
-  }, [isOpen]);
+  
 
   return (
     <div
@@ -84,7 +68,7 @@ const CartSideBar = ({ isOpen, onClose }) => {
                         role="list"
                         className="-my-6 divide-y divide-gray-200"
                       >
-                        {cartItems?.map((item) => (
+                        {products?.map((item) => (
                           <li key={item?.id} className="flex py-6">
                             <div className="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
                               <Image
@@ -98,13 +82,13 @@ const CartSideBar = ({ isOpen, onClose }) => {
                             <div className="ml-4 flex flex-1 flex-col">
                               <div>
                                 <div className="flex justify-between text-base font-medium text-gray-900">
-                                  <h3 className="GeneralSans text-xl">
+                                  <h3 className="GeneralSans text-xl text-black rubick">
                                     <Link href={`/shop/${item?.slug}`}>
                                       {item?.name}
                                     </Link>
                                   </h3>
                                   <p className="ml-4 sale-price text-[#FC4242] text-lg font-semibold">
-                                    AED {item?.price?.toFixed(2)}
+                                    $ {item?.price?.toFixed(2)}
                                   </p>
                                 </div>
                               </div>

@@ -1,4 +1,4 @@
-import { Productimage, ShopReview, UserProfile } from "@/assets";
+import { UserProfile } from "@/assets";
 import { getAllProducts, getProductById } from "@/cached-requests";
 import Review from "@/components/General/Review";
 import ProductGift from "@/components/Shop/ProductGift";
@@ -71,7 +71,7 @@ const Page = async ({ params }) => {
       <RelatedProducts relatedProducts={allProducts} />
       <ProductGift />
       <Review
-        fetureimage={ShopReview}
+     
         reviewslider1={reviewslider1}
         reviewslider2={reviewslider2}
       />

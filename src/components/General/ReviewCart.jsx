@@ -19,7 +19,7 @@ const ReviewCart = ({ review, flip }) => {
         <div className="content-area w-[50%]">
           <div className=" bg-[#FCFCFC] border rounded-2xl border-[#CCC6C4] py-4 px-2 h-full flex items-center justify-center flex-col">
             <div>
-              <p className="text-[#160D09] font-normal text-center text-lg mb-3 rubick">
+              <p className="text-[#160D09] font-normal text-center text-base mb-3 rubick">
                 {review.review}
               </p>
               <h4 className="font-normal text-black capitalize flex items-center flex-row gap-2 justify-center">

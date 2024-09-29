@@ -74,13 +74,13 @@ const CheckoutTotal = ({
             key={index}
             className="flex justify-between border-b-1 pb-5 my-5"
           >
-            <h4 className="font-semibold text-sm uppercase text-[#FC4242]">
+            <h4 className="font-semibold text-sm rubick uppercase text-[#FC4242]">
               {item?.name}{" "}
               <span className="text-xs font-medium text-black px-4">
                 ({item?.quantity} * AED {item?.price})
               </span>
             </h4>
-            <h4 className="font-semibold text-sm">
+            <h4 className="font-semibold text-sm rubick">
               AED {(item?.quantity * item?.price).toFixed(2)}
             </h4>
           </div>
@@ -90,7 +90,7 @@ const CheckoutTotal = ({
           <input
             type="text"
             placeholder="Add promo code (Optional)"
-            className={`w-full placeholder:text-[14px] px-4 py-4 focus:outline-none focus:ring-2 focus:ring-black
+            className={`rubick w-full placeholder:text-[14px] px-4 py-4 focus:outline-none focus:ring-2 focus:ring-black
                 border border-gray-300 ${
                   promoError?.length > 5 ? "border-red-400" : ""
                 } 
@@ -100,7 +100,7 @@ const CheckoutTotal = ({
           />
           <button
             onClick={handleApplyPromo}
-            className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-[#FC4242] text-white hover:bg-[#ce3b3bfa] text-sm px-4 py-3 rounded-md font-semibold transition duration-300 ease-in-out"
+            className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-themeSecondary-0 text-white hover:bg-white text-sm px-4 py-3 rounded-md font-semibold transition duration-300 ease-in-out"
             type="button"
           >
             Apply Promo
