@@ -6,11 +6,20 @@ import Image from "next/image";
 import { API } from "@/api";
 import useProductStore from "@/store/products";
 
-const CartSideBar = ({ isOpen, onClose }) => {
-  const [cartItems, setCartItems] = useState(null);
-  const { products } = useProductStore();
-  const [total , setTotal] = useState(0)
+const CartSideBar = ({ isOpen, onClose }) => { 
+  const { products } = useProductStore(); 
+  const [total, setTotal] = useState(0);
 
+  // Calculate subtotal whenever products change
+  useEffect(() => {
+    if (products) {
+      const subtotal = products.reduce(
+        (sum, product) => sum + product.price * product.quantity,
+        0
+      );
+      setTotal(subtotal.toFixed(2)); // Format to 2 decimal places
+    }
+  }, [products]);
   
 
   return (
