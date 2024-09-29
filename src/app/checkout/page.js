@@ -1,5 +1,4 @@
 import CheckoutComponent from "@/components/Checkout/CheckoutComponent";
-import InnerpageHeader from "@/components/general/InnerpageHeader";
 import React from "react";
 
 export const metadata = {
