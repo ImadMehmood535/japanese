@@ -2,9 +2,11 @@
 import { API } from "@/api";
 import { options } from "@/data/cities";
 import { Button } from "@nextui-org/react";
+import { Elements } from "@stripe/react-stripe-js";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
+import StripePayment from "./StripePayment";
 
 const CheckoutTotal = ({
   cartitem,
@@ -12,7 +14,11 @@ const CheckoutTotal = ({
   loading,
   setPromoData,
   setTotal,
+  stripePromise,
+  clientSecret,
 }) => {
+  console.log(stripePromise, "  stripePromise,");
+  console.log(clientSecret, "  clientSecret");
   const [subtotal, setSubtotal] = useState(0);
   const [promoError, setPromoError] = useState("");
   const [promoPrice, setPromoPrice] = useState(null);
@@ -101,7 +107,7 @@ const CheckoutTotal = ({
           <button
             onClick={handleApplyPromo}
             className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-[#FC4242] text-white hover:bg-[#ce3b3bfa] text-sm px-4 py-3 rounded-md font-semibold transition duration-300 ease-in-out"
-            type="button"
+            // type="button"
           >
             Apply Promo
           </button>
@@ -117,14 +123,25 @@ const CheckoutTotal = ({
             <span>$ {promoPrice ? promoPrice : subtotal.toFixed(2)}</span>
           </div>
 
-          <Button
+          <div className="mt-5">
+            {clientSecret && stripePromise && (
+              <Elements
+                stripe={stripePromise}
+                options={{ clientSecret: clientSecret }}
+              >
+                <StripePayment totalPrice={subtotal} />
+              </Elements>
+            )}
+          </div>
+
+          {/* <Button
             type="submit"
             isLoading={loading}
             onClick={onSubmit}
             className="w-full bg-themeSecondary-0 text-white py-2 px-4 rounded-lg hover:bg-black   mb-2"
           >
             Checkout
-          </Button>
+          </Button> */}
           <button className="font-semibold transition text-sm text-[#121212] hover:text-[#FC4242] uppercase w-full">
             <Link href="/shop">Or continue shopping</Link>
           </button>

@@ -12,6 +12,7 @@ import { useRouter } from "next/navigation";
 import { options } from "@/data/cities";
 import { setCookie } from "@/hooks/cookies";
 import useProductStore from "@/store/products";
+import { loadStripe } from "@stripe/stripe-js";
 
 const CheckoutComponent = () => {
   const { products, clearCart } = useProductStore();
@@ -34,12 +35,15 @@ const CheckoutComponent = () => {
     used: false,
     name: "",
   });
-  const onSubmit = async (data) => {
-    setLoadiong(true);
+
+  const [clientSecret, setClientSecret] = useState("");
+  const [stripePromise, setStripePromise] = useState(null);
+
+  const paymentIntent = async () => {
     try {
       const payload = {
         promoData: promodata,
-        totalPrice: total,
+        totalPrice: parseFloat(total),
         orderItems: products?.map((item) => {
           return {
             id: item?.id,
@@ -48,21 +52,53 @@ const CheckoutComponent = () => {
           };
         }),
       };
-      await API.placeOrder(payload);
+      setStripePromise(loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISH_KEY));
 
-      clearCart();
+      console.log(process.env.NEXT_PUBLIC_STRIPE_PUBLISH_KEY);
+
+      const response = await API.placeOrder(payload);
+      setClientSecret(response?.data?.data);
     } catch (error) {
-      console.error("Error submitting order:", error);
-      setLoadiong(false);
-      errorToast(error, "Can not create order at the moment ");
+      console.error("Error creating payment intend", error);
     }
   };
+
+  useEffect(() => {
+    // console.log(total, "total");
+    if (total > 0) {
+      paymentIntent();
+    }
+  }, [total]);
+
+  // const onSubmit = async (data) => {
+  //   setLoadiong(true);
+  //   try {
+  //     const payload = {
+  //       promoData: promodata,
+  //       totalPrice: total,
+  //       orderItems: products?.map((item) => {
+  //         return {
+  //           id: item?.id,
+  //           quantity: item?.quantity,
+  //           price: item?.price,
+  //         };
+  //       }),
+  //     };
+  //     await API.placeOrder(payload);
+
+  //     // clearCart();
+  //   } catch (error) {
+  //     console.error("Error submitting order:", error);
+  //     setLoadiong(false);
+  //     errorToast(error, "Can not create order at the moment ");
+  //   }
+  // };
 
   return (
     <div className="CheckoutComponent py-8 md:py-14 mx-auto">
       <div className="AboutCompany pageLayout px-0 mx-auto">
         <div className="container">
-          <form className="w-full" onSubmit={handleSubmit(onSubmit)}>
+          <div className="w-full">
             <div className="flex flex-col md:flex-row justify-between gap-16">
               <div className="w-full md:w-[65%]">
                 {/* <CheckoutForm
@@ -77,11 +113,13 @@ const CheckoutComponent = () => {
                   loading={loading}
                   cartitem={products}
                   setPromoData={setPromoData}
-                  onSubmit={handleSubmit(onSubmit)}
+                  // onSubmit={handleSubmit(onSubmit)}
+                  clientSecret={clientSecret}
+                  stripePromise={stripePromise}
                 />
               </div>
             </div>
-          </form>
+          </div>
         </div>
       </div>
     </div>
