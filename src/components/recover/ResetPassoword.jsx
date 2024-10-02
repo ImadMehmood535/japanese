@@ -12,7 +12,7 @@ import { API } from "@/api";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { resetPassword } from "@/validations/login";
 
-const ResetPassword = () => {
+const ResetPassword = ({token}) => {
   const {
     register,
     handleSubmit,
@@ -25,9 +25,13 @@ const ResetPassword = () => {
   const onSubmit = async (data) => {
     setLoading(true);
     try {
-      const response = await API.forgetPassword(data);
+      const response = await API.resetPassword({
+        password: data.newPassword,
+        token: token,
+      });
       successToast(response?.data?.message);
       setLoading(false);
+      router.push("/login")
      } catch (error) {
       setLoading(false);
       errorToast(error, "Can not log In at the moment");

@@ -22,7 +22,7 @@ export default function StripePayment({ totalPrice }) {
     const { error } = await stripe.confirmPayment({
       elements,
       confirmParams: {
-        return_url: `${window.location.origin}/user/payment/thankyou`,
+        return_url: `${window.location.origin}/thank-you`,
       },
     });
 

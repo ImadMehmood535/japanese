@@ -23,10 +23,10 @@ const CheckoutComponent = () => {
     getValues,
     watch,
     formState: { errors },
-  } = useForm();
-  // } = useForm({
-  //   resolver: yupResolver(checkoutSchema),
-  // });
+  // } = useForm();
+  } = useForm({
+    resolver: yupResolver(checkoutSchema),
+  });
 
   const [loading, setLoadiong] = useState(false);
 
@@ -70,30 +70,7 @@ const CheckoutComponent = () => {
     }
   }, [total]);
 
-  // const onSubmit = async (data) => {
-  //   setLoadiong(true);
-  //   try {
-  //     const payload = {
-  //       promoData: promodata,
-  //       totalPrice: total,
-  //       orderItems: products?.map((item) => {
-  //         return {
-  //           id: item?.id,
-  //           quantity: item?.quantity,
-  //           price: item?.price,
-  //         };
-  //       }),
-  //     };
-  //     await API.placeOrder(payload);
-
-  //     // clearCart();
-  //   } catch (error) {
-  //     console.error("Error submitting order:", error);
-  //     setLoadiong(false);
-  //     errorToast(error, "Can not create order at the moment ");
-  //   }
-  // };
-
+  
   return (
     <div className="CheckoutComponent py-8 md:py-14 mx-auto">
       <div className="AboutCompany pageLayout px-0 mx-auto">
@@ -101,11 +78,11 @@ const CheckoutComponent = () => {
           <div className="w-full">
             <div className="flex flex-col md:flex-row justify-between gap-16">
               <div className="w-full md:w-[65%]">
-                {/* <CheckoutForm
+                <CheckoutForm
                   register={register}
                   errors={errors}
                   options={options}
-                /> */}
+                />
               </div>
               <div className="w-full md:w-[35%]">
                 <CheckoutTotal

@@ -8,6 +8,7 @@ import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import StripePayment from "./StripePayment";
 
+
 const CheckoutTotal = ({
   cartitem,
   onSubmit,
@@ -80,13 +81,13 @@ const CheckoutTotal = ({
             key={index}
             className="flex justify-between border-b-1 pb-5 my-5"
           >
-            <h4 className="font-semibold text-sm uppercase text-[#FC4242]">
+            <h4 className="font-semibold text-sm rubick uppercase text-[#FC4242]">
               {item?.name}{" "}
               <span className="text-xs font-medium text-black px-4">
                 ({item?.quantity} * AED {item?.price})
               </span>
             </h4>
-            <h4 className="font-semibold text-sm">
+            <h4 className="font-semibold text-sm rubick">
               AED {(item?.quantity * item?.price).toFixed(2)}
             </h4>
           </div>
@@ -96,7 +97,7 @@ const CheckoutTotal = ({
           <input
             type="text"
             placeholder="Add promo code (Optional)"
-            className={`w-full placeholder:text-[14px] px-4 py-4 focus:outline-none focus:ring-2 focus:ring-black
+            className={`rubick w-full placeholder:text-[14px] px-4 py-4 focus:outline-none focus:ring-2 focus:ring-black
                 border border-gray-300 ${
                   promoError?.length > 5 ? "border-red-400" : ""
                 } 

@@ -7,8 +7,8 @@ export const metadata = {
   description: "This is a log in page",
 };
 
-const Page = () => {
-  return <ResetPassword />;
+const Page = ({searchParams}) => {
+  return <ResetPassword token={searchParams.token}/>;
 };
 
 export default Page;

@@ -8,7 +8,7 @@ import ReviewCart from "./ReviewCart";
 
 const Review = ({ fetureimage, reviewslider1, reviewslider2 }) => {
   return (
-    <div className="Review relative">
+    <div className="Review relative  py-8 md:py-16">
       {fetureimage && (
         <Image
           src={fetureimage}
